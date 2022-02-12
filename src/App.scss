@@ -2,10 +2,17 @@
   margin: 0;
   padding: 0;
 
-  /* font-family: 'Be Vietnam Pro', sans-serif; */
-  font-family: 'Raleway', sans-serif;
+  font-family: "Be Vietnam Pro", sans-serif;
 
   box-sizing: border-box;
+}
+
+.page {
+
+    height: 100vh;
+    width: 100vw;
+    
+    padding: 0px 3vw;
 }
 
 header {
@@ -29,6 +36,12 @@ header {
   color: #000;
 }
 
+.main-page-button {
+
+    // width: 986px;
+    width: 100%
+}
+
 @mixin titleOneAndTwoBreakpoint($fontSize) {
     
     .title-one {
@@ -44,48 +57,28 @@ header {
 
 @media (min-width: 1800px) {
 
-    $fontSize: 75pt;
+    $fontSize: 70pt;
 
-    @include titleOneAndTwoBreakpoint($fontSize);
-
-    .main-page-button {
-
-        width: 986px;
-    }
+    @include titleOneAndTwoBreakpoint($fontSize);  
 }
 
 @media (max-width: 1800px) {
 
-    $fontSize: 60pt;
+    $fontSize: 55pt;
 
     @include titleOneAndTwoBreakpoint($fontSize);
-
-    .main-page-button {
-
-        width: 788px;
-    }
 }
 
 @media (max-width: 900px) {
 
-    $fontSize: 45pt;
+    $fontSize: 40pt;
   
     @include titleOneAndTwoBreakpoint($fontSize);
-
-    .main-page-button {
-
-        width: 593px;
-    }
 }
 
 @media (max-width: 640px) {
 
-    $fontSize: 40pt;
+    $fontSize: 35pt;
 
     @include titleOneAndTwoBreakpoint($fontSize);
-
-    .main-page-button {
-
-        width: 527px;
-    }
 }

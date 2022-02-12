@@ -11,12 +11,7 @@ const MainHeader = (props) => {
         justify-content: space-between;
         align-items: center;
 
-        height: 10vh;
-        width: 100vw;
-
-        padding: 0px 3vw;
-
-        /* background: red; */
+        height: 15vh;
 
         .logo-container {
 
@@ -33,7 +28,7 @@ const MainHeader = (props) => {
 
                 &:hover{
 
-                    animation: rotateIcon 1s ease-out forwards;
+                    animation: rotateIcon 1.5s ease-out forwards;
                 }
 
                 @keyframes rotateIcon {

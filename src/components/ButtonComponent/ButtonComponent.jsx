@@ -10,7 +10,7 @@ const ButtonComponent = (props) => {
                 width: props.mainPage ? null : props.width,
                 color: "#fff",
                 backgroundColor: "#4CAF50",
-                fontFamily: "Raleway",
+                fontFamily: "Be Vietnam Pro",
                 fontWeight: "bold",
                 fontSize: "15pt",
                 padding: "1vh 0px"
