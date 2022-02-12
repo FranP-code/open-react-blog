@@ -1,72 +1,77 @@
 * {
   margin: 0;
   padding: 0;
-
   /* font-family: 'Be Vietnam Pro', sans-serif; */
-  font-family: 'Raleway', sans-serif;
-
+  font-family: "Raleway", sans-serif;
   box-sizing: border-box;
 }
 
 header {
-
   user-select: none;
 }
-
-header * h1, header h1 {
-
+header * h1, header header h1 {
   font-size: 48pt;
 }
-
-header * h2, header h2 {
-
+header * h2, header header h2 {
   font-size: 29pt;
 }
 
 .title-one::selection, .title-two::selection {
-
   background-color: #ffe83d;
   color: #000;
 }
 
 @media (min-width: 1800px) {
-
   .title-one {
-    
     font-size: 75pt;
   }
 
   .title-two {
-
     font-size: 55pt;
   }
+
+  .main-page-button {
+    width: 986px;
+  }
 }
-
 @media (max-width: 1800px) {
-  
   .title-one {
-
     font-size: 60pt;
   }
 
   .title-two {
-
     font-size: 40pt;
   }
+
+  .main-page-button {
+    width: 788px;
+  }
 }
-
 @media (max-width: 900px) {
-  
   .title-one {
-
     font-size: 45pt;
   }
-}
 
-@media (max-width: 640px) {
+  .title-two {
+    font-size: 25pt;
+  }
 
-  .title-one {
-
-    font-size: 40pt;
+  .main-page-button {
+    width: 593px;
   }
 }
+@media (max-width: 640px) {
+  .title-one {
+    font-size: 40pt;
+  }
+
+  .title-two {
+    font-size: 20pt;
+  }
+
+  .main-page-button {
+    width: 527px;
+  }
+}
+
+/*# sourceMappingURL=App.css.map */

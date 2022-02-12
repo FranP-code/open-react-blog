@@ -43,9 +43,14 @@ const MainHeader = (props) => {
                         height: 8vh;
                     }
 
-                    100% {
+                    50% {
                         transform: rotate(360deg);
                         height: 8.5vh;
+                    }
+
+                    100% {
+                        transform: rotate(360deg);
+                        height: 8vh;
                     }
                 }
             }
