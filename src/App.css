@@ -22,3 +22,51 @@ header * h2, header h2 {
 
   font-size: 29pt;
 }
+
+.title-one::selection, .title-two::selection {
+
+  background-color: #ffe83d;
+  color: #000;
+}
+
+@media (min-width: 1800px) {
+
+  .title-one {
+    
+    font-size: 75pt;
+  }
+
+  .title-two {
+
+    font-size: 55pt;
+  }
+}
+
+@media (max-width: 1800px) {
+  
+  .title-one {
+
+    font-size: 60pt;
+  }
+
+  .title-two {
+
+    font-size: 40pt;
+  }
+}
+
+@media (max-width: 900px) {
+  
+  .title-one {
+
+    font-size: 45pt;
+  }
+}
+
+@media (max-width: 640px) {
+
+  .title-one {
+
+    font-size: 40pt;
+  }
+}
