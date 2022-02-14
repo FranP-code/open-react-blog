@@ -10,7 +10,7 @@
 .page {
 
     height: 100vh;
-    width: 100vw;
+    // width: 100vw;
     
     padding: 0px 3vw;
 }
@@ -30,7 +30,7 @@ header {
     }
 }
 
-.title-one::selection, .title-two::selection {
+.title-one::selection, .title-two::selection, #rotatory-text-element::selection {
 
   background-color: #ffe83d;
   color: #000;
@@ -42,7 +42,7 @@ header {
     width: 100%
 }
 
-@mixin titleOneAndTwoBreakpoint($fontSize) {
+@mixin textsBreakpoints($fontSize, $subtractionTitleTwo: 20pt, $subtractionLiTitleElement: 30pt) {
     
     .title-one {
     
@@ -51,7 +51,12 @@ header {
     
     .title-two {
     
-        font-size: calc($fontSize - 20pt);
+        font-size: calc($fontSize - $subtractionTitleTwo);
+    }
+
+    div.title-element {
+
+        font-size: calc($fontSize - $subtractionLiTitleElement);
     }
 }
 
@@ -59,26 +64,30 @@ header {
 
     $fontSize: 70pt;
 
-    @include titleOneAndTwoBreakpoint($fontSize);  
+    @include textsBreakpoints($fontSize, 20pt, 35pt);
 }
 
 @media (max-width: 1800px) {
 
     $fontSize: 55pt;
 
-    @include titleOneAndTwoBreakpoint($fontSize);
+    @include textsBreakpoints($fontSize);
 }
 
 @media (max-width: 900px) {
 
     $fontSize: 40pt;
-  
-    @include titleOneAndTwoBreakpoint($fontSize);
+    $subtractionTitleTwo: 10pt;
+    $subtractionLiTitleElement: 15pt;
+
+    @include textsBreakpoints($fontSize, $subtractionTitleTwo, $subtractionLiTitleElement);
 }
 
 @media (max-width: 640px) {
 
     $fontSize: 35pt;
+    $subtractionTitleTwo: 10pt;
+    $subtractionLiTitleElement: 15pt;
 
-    @include titleOneAndTwoBreakpoint($fontSize);
+    @include textsBreakpoints($fontSize, $subtractionTitleTwo, $subtractionLiTitleElement);
 }
