@@ -35,7 +35,7 @@ const PageOne = () => {
                     <ButtonComponent text={"Create Account"} mainPage={true}/>
                 </MainContent>
             </FlexContainer>
-            <GoToDownArrow/>
+            <GoToDownArrow direction={"page-two"}/>
         </div>
     )
 }

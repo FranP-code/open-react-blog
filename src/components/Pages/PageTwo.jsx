@@ -43,7 +43,7 @@ const PageTwo = () => {
     `
   
     return (
-        <div className='page'>
+        <div className='page' id="page-two">
             <FlexContainer>
                 <OrderedList
                     typeOfList={'title'}
