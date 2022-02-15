@@ -62,14 +62,14 @@ header {
 
 @media (min-width: 1800px) {
 
-    $fontSize: 70pt;
+    $fontSize: 50pt;
 
     @include textsBreakpoints($fontSize, 20pt, 35pt);
 }
 
 @media (max-width: 1800px) {
 
-    $fontSize: 55pt;
+    $fontSize: 45pt;
 
     @include textsBreakpoints($fontSize);
 }

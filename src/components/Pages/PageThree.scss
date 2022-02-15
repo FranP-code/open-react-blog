@@ -1,0 +1,56 @@
+#page-three .flex-container {
+
+    display: flex;
+
+    margin-top: 5vh;
+
+    .link-preview {
+
+        margin-left: 10vw;
+
+        .username {
+
+            background: linear-gradient(133deg, rgba(63,94,251,1) 0%, rgba(185,49,49,1) 100%);
+            -webkit-background-clip: text; //https://cssgradient.io/blog/css-gradient-text/
+            -webkit-text-fill-color: transparent;
+
+            &::selection {
+
+                background: none;
+                
+                background: #ffe83d;
+                color: #000;
+
+                -webkit-background-clip: border-box; //https://cssgradient.io/blog/css-gradient-text/
+                -webkit-text-fill-color: initial;
+            }
+        }
+    }
+
+    .account-form {
+        form {
+
+            display: flex;
+            flex-direction: column;
+
+            input {
+
+                height: 5vh;
+
+                margin-bottom: 1vh;
+
+                outline: none;
+
+                border: none;
+                border-bottom: 1px solid #000;
+
+                font-size: 2.3vh;
+            }
+
+            Button {
+
+                margin-top: 3vh;
+            }
+        }
+    }
+}

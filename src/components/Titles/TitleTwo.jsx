@@ -7,6 +7,7 @@ const TitleTwo = (props) => {
             className='title-two'
         >
             {props.text}
+            {props.children}
         </h2>
     )
 }

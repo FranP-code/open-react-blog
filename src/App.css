@@ -31,28 +31,28 @@ header * h2, header header h2 {
 
 @media (min-width: 1800px) {
   .title-one {
-    font-size: 70pt;
-  }
-
-  .title-two {
     font-size: 50pt;
   }
 
+  .title-two {
+    font-size: 30pt;
+  }
+
   div.title-element {
-    font-size: 35pt;
+    font-size: 15pt;
   }
 }
 @media (max-width: 1800px) {
   .title-one {
-    font-size: 55pt;
+    font-size: 45pt;
   }
 
   .title-two {
-    font-size: 35pt;
+    font-size: 25pt;
   }
 
   div.title-element {
-    font-size: 25pt;
+    font-size: 15pt;
   }
 }
 @media (max-width: 900px) {

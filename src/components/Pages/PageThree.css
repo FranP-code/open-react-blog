@@ -1,0 +1,36 @@
+#page-three .flex-container {
+  display: flex;
+  margin-top: 5vh;
+}
+#page-three .flex-container .link-preview {
+  margin-left: 10vw;
+}
+#page-three .flex-container .link-preview .username {
+  background: linear-gradient(133deg, #3f5efb 0%, #b93131 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#page-three .flex-container .link-preview .username::selection {
+  background: none;
+  background: #ffe83d;
+  color: #000;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: initial;
+}
+#page-three .flex-container .account-form form {
+  display: flex;
+  flex-direction: column;
+}
+#page-three .flex-container .account-form form input {
+  height: 5vh;
+  margin-bottom: 1vh;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 2.3vh;
+}
+#page-three .flex-container .account-form form Button {
+  margin-top: 3vh;
+}
+
+/*# sourceMappingURL=PageThree.css.map */

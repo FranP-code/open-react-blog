@@ -5,6 +5,7 @@ const ButtonComponent = (props) => {
     
     return (
         <Button
+            type={props.type}
             className={props.mainPage ? 'main-page-button' : null}
             style={{
                 width: props.mainPage ? null : props.width,
@@ -15,8 +16,10 @@ const ButtonComponent = (props) => {
                 fontSize: "15pt",
                 padding: "1vh 0px"
             }}
+            onClick={(e) => props.function(e)}
         >
             {props.text}
+            {props.children}
         </Button>
     )
 }

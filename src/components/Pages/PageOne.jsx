@@ -25,6 +25,13 @@ const PageOne = () => {
         
     `
 
+    function goToCreateAccount(e) {
+
+        e.preventDefault()
+
+        window.location.href = './create-account'
+    }
+
     return (
         <div className='page'>
             <MainHeader/>
@@ -32,7 +39,7 @@ const PageOne = () => {
                 <MainContent>
                     <TitleTwo text={"Write your post"} />
                     <TitleOne text={"Share with the world"}/>
-                    <ButtonComponent text={"Create Account"} mainPage={true}/>
+                    <ButtonComponent text={"Create Account"} mainPage={true} function={goToCreateAccount}/>
                 </MainContent>
             </FlexContainer>
             <GoToDownArrow direction={"page-two"}/>
