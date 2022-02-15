@@ -33,8 +33,9 @@ const AccountForm = ({action, email, setEmail, username, setUsername, password, 
                 />
                 <ButtonComponent
                     type="submit"
+                    color="#4CAF50"
                     text={action === 'register' ? 'Create Account' : "Log in"}
-                    function={(e) => submitFunction(e)}
+                    onClickFunction={(e) => submitFunction(e)}
                 />
                 {/* <input type="submit" value={action === 'register' ? 'Create Account' : "Log in"} /> */}
             </form>

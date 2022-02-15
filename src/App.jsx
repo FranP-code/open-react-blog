@@ -8,6 +8,7 @@ import {
   Link
 } from "react-router-dom";
 import PageThree from './components/Pages/PageThree/PageThree';
+import PageFour from './components/Pages/PageFour/PageFour';
 
 function App() {
   return (
@@ -16,6 +17,9 @@ function App() {
         <Switch>
           <Route path="/create-account">
             <PageThree />
+          </Route>
+          <Route path="/:displayUsername">
+            <PageFour />
           </Route>
           <Route path="/">
             <PageOne />

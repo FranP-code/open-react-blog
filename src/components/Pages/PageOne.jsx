@@ -39,7 +39,7 @@ const PageOne = () => {
                 <MainContent>
                     <TitleTwo text={"Write your post"} />
                     <TitleOne text={"Share with the world"}/>
-                    <ButtonComponent text={"Create Account"} mainPage={true} function={goToCreateAccount}/>
+                    <ButtonComponent color="#4CAF50" text={"Create Account"} mainPage={true} onClickFunction={goToCreateAccount}/>
                 </MainContent>
             </FlexContainer>
             <GoToDownArrow direction={"page-two"}/>

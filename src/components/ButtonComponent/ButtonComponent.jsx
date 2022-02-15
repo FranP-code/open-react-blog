@@ -1,25 +1,25 @@
-import React from 'react'
+import React, {useState} from 'react'
 import {Button} from '@mui/material'
 
-const ButtonComponent = (props) => {
+const ButtonComponent = ({type, mainPage, width, color, onClickFunction, text, children}) => {
     
     return (
         <Button
-            type={props.type}
-            className={props.mainPage ? 'main-page-button' : null}
+            type={type}
+            className={mainPage ? 'main-page-button' : null}
             style={{
-                width: props.mainPage ? null : props.width,
+                width: mainPage ? null : width,
                 color: "#fff",
-                backgroundColor: "#4CAF50",
+                backgroundColor: color,
                 fontFamily: "Be Vietnam Pro",
                 fontWeight: "bold",
                 fontSize: "15pt",
                 padding: "1vh 0px"
             }}
-            onClick={(e) => props.function(e)}
+            onClick={(e) => onClickFunction(e)}
         >
-            {props.text}
-            {props.children}
+            {text}
+            {children}
         </Button>
     )
 }
