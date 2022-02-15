@@ -1,12 +1,17 @@
 import React, { useRef, useState } from 'react'
 import './PageThree.css'
-import AccountForm from '../AccountForm/AccountForm'
-import LinkPreview from '../LinkPreview/LinkPreview'
-import MainHeader from '../MainHeader/MainHeader'
+import AccountForm from '../../AccountForm/AccountForm'
+import LinkPreview from '../../LinkPreview/LinkPreview'
+import MainHeader from '../../MainHeader/MainHeader'
 import { useSnackbar } from 'notistack';
+
+import checkUsername from './Firebase Querys/checkUsername'
+import createUser from './Firebase Querys/createUser'
+import createUserDocumentOnFirestore from './Firebase Querys/createUserDocumentOnFirestore'
 
 const PageThree = () => {
 
+    const [displayUsername, setDisplayUsername] = useState('username')
     const [username, setUsername] = useState('username')
     
     const emailValue = useRef(undefined)
@@ -16,13 +21,13 @@ const PageThree = () => {
 
     React.useEffect(() => {
 
-        if (username === '') {
+        if (displayUsername === '') {
 
             setUsername('username')
             return
         }
 
-        let newUsername = username
+        let newUsername = displayUsername
         newUsername = newUsername.toLowerCase()
 
         if (newUsername.includes(' ')) {
@@ -53,7 +58,7 @@ const PageThree = () => {
         // document.getElementById('username-input').focus()
     
     
-    }, [username])
+    }, [displayUsername])
 
     const validateEmail = (email) => {
         return String(email)
@@ -63,7 +68,10 @@ const PageThree = () => {
           );
       }; //https://stackoverflow.com/questions/46155/whats-the-best-way-to-validate-an-email-address-in-javascript
 
-    function submitFunction(e) {
+    async function submitFunction (e) {
+
+        console.log(displayUsername)
+        console.log(username)
 
         e.preventDefault()
 
@@ -115,10 +123,39 @@ const PageThree = () => {
             return
         }
 
-        enqueueSnackbar("Creating account", {
+        const creatingAccountMessage = enqueueSnackbar("Creating account", {
             variant: "info",
-            
         })
+
+        const usernameTaken = await checkUsername(username, enqueueSnackbar)
+
+        if (usernameTaken) {
+
+            closeSnackbar(creatingAccountMessage)
+            return
+        }
+
+        const createUserResponse = await createUser(email, password)
+        
+        if (createUserResponse === 'auth/email-already-in-use') {
+
+            enqueueSnackbar("Email already in use", {
+                variant: "error",
+                persist: false
+            })
+
+            closeSnackbar(creatingAccountMessage)
+            return
+        }
+
+        enqueueSnackbar("Account created!, you will be redirected in 3 seconds", {
+            variant: "success",
+            persist: false
+        })
+
+        const userData = createUserResponse
+
+        createUserDocumentOnFirestore(userData, username, displayUsername)
     }
   
     return (
@@ -128,7 +165,7 @@ const PageThree = () => {
                 <AccountForm action={'register'}
                     
                     username={username}
-                    setUsername={setUsername}
+                    setUsername={setDisplayUsername}
                     
                     email={emailValue}
                     

@@ -7,7 +7,7 @@ import {
   Route,
   Link
 } from "react-router-dom";
-import PageThree from './components/Pages/PageThree';
+import PageThree from './components/Pages/PageThree/PageThree';
 
 function App() {
   return (
