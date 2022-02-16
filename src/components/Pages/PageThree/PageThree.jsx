@@ -9,7 +9,9 @@ import checkUsername from './Firebase Querys/checkUsername'
 import createUser from './Firebase Querys/createUser'
 import createUserDocumentOnFirestore from './Firebase Querys/createUserDocumentOnFirestore'
 
-const PageThree = () => {
+import {withRouter} from 'react-router'
+
+const PageThree = (props) => {
 
     const [displayUsername, setDisplayUsername] = useState('username')
     const [username, setUsername] = useState('username')
@@ -148,14 +150,20 @@ const PageThree = () => {
             return
         }
 
-        enqueueSnackbar("Account created!, you will be redirected in 3 seconds", {
+        enqueueSnackbar("Account created!, you will be redirected in 3 seconds.", {
             variant: "success",
             persist: false
         })
 
         const userData = createUserResponse
 
-        createUserDocumentOnFirestore(userData, username, displayUsername)
+        await createUserDocumentOnFirestore(userData, username, displayUsername)
+        
+        setTimeout(() => {
+            
+            props.history.push(`../${username}`)
+        
+        }, 3000);
     }
   
     return (
@@ -179,4 +187,4 @@ const PageThree = () => {
     )
 }
 
-export default PageThree
+export default withRouter(PageThree)
