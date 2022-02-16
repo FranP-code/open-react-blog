@@ -18,7 +18,7 @@ function App() {
           <Route path="/create-account">
             <PageThree />
           </Route>
-          <Route path="/:displayUsername">
+          <Route path="/:username">
             <PageFour />
           </Route>
           <Route path="/">

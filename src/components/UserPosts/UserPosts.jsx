@@ -1,7 +1,7 @@
-import { div, ImageList, p } from '@mui/material'
 import React from 'react'
 import styled from 'styled-components'
 import TitleTwo from '../Titles/TitleTwo'
+import Article from './Article'
 
 const UserPosts = () => {
 
@@ -32,6 +32,8 @@ const UserPosts = () => {
                     border-radius: 5px;
 
                     box-shadow: 3px 3px 1px #000;
+
+                    cursor: pointer;
 
                     &:hover {
 
@@ -82,73 +84,10 @@ const UserPosts = () => {
     `
   
     return (
-        <ArticlesContainerStyles>
+        <ArticlesContainerStyles className="animate__animated animate__fadeIn">
             <div className='articles-container'>
                 <div className="articles-row row-1">
-                    <div  className='article' >
-                        <div className="top">
-                            <TitleTwo>
-                                Lalalallalallalalallalalall
-                            </TitleTwo>
-                            <div className='aditional-data'>
-                                <span className='date'>
-                                    12-02-2002
-                                </span>
-                                <span className="lecture-time">
-                                    3 min.
-                                </span>
-                            </div>
-                        </div>
-
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ratione debitis nobis ut vel deleniti assumenda totam, fugiat eos qui ea eligendi perferendis quos sapiente ipsam eaque reiciendis placeat veniam!
-                        </p>
-                    </div>
-                    <div  className='article' >
-                        <TitleTwo>
-                            Header
-                        </TitleTwo>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non provident optio, nesciunt et natus reprehenderit necessitatibus harum nemo suscipit iure, nam tenetur quibusdam quisquam odio accusantium laborum magni inventore neque. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo alias adipisci minus tempore, voluptatem similique, dolores dolore temporibus ullam itaque nobis doloribus quibusdam. Velit facilis molestiae eum amet corrupti quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt consequuntur laborum libero? Omnis, doloribus minus vitae illo non rerum laboriosam illum, dolorem, deserunt ad praesentium reiciendis eaque esse voluptatibus a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Non provident optio, nesciunt et natus reprehenderit necessitatibus harum nemo suscipit iure, nam tenetur quibusdam quisquam odio accusantium laborum magni inventore neque. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo alias adipisci minus tempore, voluptatem similique, dolores dolore temporibus ullam itaque nobis doloribus quibusdam. Velit facilis molestiae eum amet corrupti quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt consequuntur laborum libero? Omnis, doloribus minus vitae illo non rerum laboriosam illum, dolorem, deserunt ad praesentium reiciendis eaque esse voluptatibus a!
-                        </p>
-                    </div>
-                </div>
-
-                <div className="articles-row row-2">
-                    <div  className='article' >
-                        <TitleTwo>
-                            Header
-                        </TitleTwo>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non provident optio, nesciunt et natus reprehenderit necessitatibus harum nemo suscipit iure, nam tenetur quibusdam quisquam odio accusantium laborum magni inventore neque. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo alias adipisci minus tempore, voluptatem similique, dolores dolore temporibus ullam itaque nobis doloribus quibusdam. Velit facilis molestiae eum amet corrupti quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt consequuntur laborum libero? Omnis, doloribus minus vitae illo non rerum laboriosam illum, dolorem, deserunt ad praesentium reiciendis eaque esse voluptatibus a!
-                        </p>
-                    </div>
-                    <div  className='article' >
-                        <TitleTwo>
-                            Header
-                        </TitleTwo>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ratione debitis nobis ut vel deleniti assumenda totam, fugiat eos qui ea eligendi perferendis quos sapiente ipsam eaque reiciendis placeat veniam!
-                        </p>
-                    </div>
-                </div>
-                <div className="articles-row row-3">        
-                    <div  className='article' >
-                        <TitleTwo>
-                            Header
-                        </TitleTwo>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non provident optio, nesciunt et natus reprehenderit necessitatibus harum nemo suscipit iure, nam tenetur quibusdam quisquam odio accusantium laborum magni inventore neque. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo alias adipisci minus tempore, voluptatem similique, dolores dolore temporibus ullam itaque nobis doloribus quibusdam. Velit facilis molestiae eum amet corrupti quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt consequuntur laborum libero? Omnis, doloribus minus vitae illo non rerum laboriosam illum, dolorem, deserunt ad praesentium reiciendis eaque esse voluptatibus a!Lorem ipsum dolor sit amet consectetur adipisicing elit. Non provident optio, nesciunt et natus reprehenderit necessitatibus harum nemo suscipit iure, nam tenetur quibusdam quisquam odio accusantium laborum magni inventore neque. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo alias adipisci minus tempore, voluptatem similique, dolores dolore temporibus ullam itaque nobis doloribus quibusdam. Velit facilis molestiae eum amet corrupti quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt consequuntur laborum libero? Omnis, doloribus minus vitae illo non rerum laboriosam illum, dolorem, deserunt ad praesentium reiciendis eaque esse voluptatibus a!
-                        </p>
-                    </div>
-                    <div  className='article' >
-                        <TitleTwo>
-                            Header
-                        </TitleTwo>
-                        <p>
-                            Lorem ipsum dolor sit amet consectetur adipisicing elit. Non provident optio, nesciunt et natus reprehenderit necessitatibus harum nemo suscipit iure, nam tenetur quibusdam quisquam odio accusantium laborum magni inventore neque. Lorem, ipsum dolor sit amet consectetur adipisicing elit. Nemo alias adipisci minus tempore, voluptatem similique, dolores dolore temporibus ullam itaque nobis doloribus quibusdam. Velit facilis molestiae eum amet corrupti quibusdam. Lorem ipsum dolor sit amet consectetur adipisicing elit. Nesciunt consequuntur laborum libero? Omnis, doloribus minus vitae illo non rerum laboriosam illum, dolorem, deserunt ad praesentium reiciendis eaque esse voluptatibus a!
-                        </p>
-                    </div>
+                    <Article />
                 </div>
             </div>
         </ArticlesContainerStyles>
