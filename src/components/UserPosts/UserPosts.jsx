@@ -3,7 +3,7 @@ import styled from 'styled-components'
 import TitleTwo from '../Titles/TitleTwo'
 import Article from './Article'
 
-const UserPosts = () => {
+const UserPosts = ({posts}) => {
 
     const ArticlesContainerStyles = styled.div`
         
@@ -87,7 +87,28 @@ const UserPosts = () => {
         <ArticlesContainerStyles className="animate__animated animate__fadeIn">
             <div className='articles-container'>
                 <div className="articles-row row-1">
-                    <Article />
+                    {
+                        posts[0].map((post, index) => (
+
+                            <Article post={post} key={index}/>
+                        ))
+                    }
+                </div>
+                <div className="articles-row row-2">
+                    {
+                        posts[1].map((post, index) => (
+
+                            <Article post={post} key={index}/>
+                        ))
+                    }
+                </div>
+                <div className="articles-row row-3">
+                    {
+                        posts[2].map((post, index) => (
+
+                            <Article post={post} key={index}/>
+                        ))
+                    }
                 </div>
             </div>
         </ArticlesContainerStyles>

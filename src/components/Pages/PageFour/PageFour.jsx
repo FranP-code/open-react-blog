@@ -1,4 +1,3 @@
-import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React, { useState } from 'react'
 import {useParams} from 'react-router-dom'
@@ -10,7 +9,7 @@ import checkUsernameExistance from './Firebase Querys/checkUsernameExistance'
 import { faFaceTired } from '@fortawesome/free-solid-svg-icons'
 import TitleTwo from '../../Titles/TitleTwo'
 import checkUsernameLoged from "./Firebase Querys/checkUsernameLoged";
-// import checkUsernameLoged from './Firebase Querys/checkUsernameLoged'
+import returnAndFormatUsernameDocuments from './Firebase Querys/returnAndFormatUsernameDocuments'
 
 const PageFour = () => {
 
@@ -18,19 +17,23 @@ const PageFour = () => {
   const [displayUsername, setDisplayUsername] = useState(false)
   const username = useParams().username
   const [userLoged, setUserLoged] = useState(false)
+  const [posts, setPosts] = useState([[], [], []])
 
   async function pageFourHandler() {
 
     const checkUsernameData = await checkUsernameExistance(username)
     console.log(checkUsernameData)
 
-    if (!checkUsernameData.userExists) {
-      setLoading(false)
-      return
+    if (checkUsernameData.userExists) {
+      setDisplayUsername(checkUsernameData.data.displayUsername)
+      checkUsernameLoged(checkUsernameData.id, setUserLoged)
+      
+      const docs = await returnAndFormatUsernameDocuments(checkUsernameData.id)
+      setPosts(docs)
     }
     
-    setDisplayUsername(checkUsernameData.data.displayUsername)
-    checkUsernameLoged(checkUsernameData.id, setUserLoged, setLoading)
+
+    setLoading(false)
   }
   
   React.useEffect(() => {
@@ -44,7 +47,7 @@ const PageFour = () => {
         displayUsername ?
           <>
             <UserHeader displayUsername={displayUsername} signedIn={userLoged}/>
-            <UserPosts />
+            <UserPosts posts={posts}/>
           </>
         : 
         <NoDataPage color="#aabdd6">

@@ -1,7 +1,6 @@
-import {firebase} from '../../../../firebase'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 
-const checkUsernameLoged = (documentId, setUserLoged, setLoading) => {
+const checkUsernameLoged = (documentId, setUserLoged) => {
   
     try {
         const auth = getAuth()
@@ -18,12 +17,9 @@ const checkUsernameLoged = (documentId, setUserLoged, setLoading) => {
                 if (user.uid === documentId) {
   
                   setUserLoged(true)
-                  setLoading(false)
                   return
                 }
               }
-              
-            setLoading(false)  
             setUserLoged(false)
         })
         
