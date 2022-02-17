@@ -15,15 +15,14 @@ const Article = ({post}) => {
                         {moment(moment.unix(post.date.seconds)).format('L')}
                     </span>
                     <span className="lecture-time">
-                        {post.readTime}
+                        {post.readingTime}
                     </span>
             </div>
             </div>
             <p>
                 {
-                    post.firstPragraph || post.fristParagraph /////! CHANGE TO FIRSTPARAGRAPH  !!!!
+                    post.shortPost
                 }
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Nulla ratione debitis nobis ut vel deleniti assumenda totam, fugiat eos qui ea eligendi perferendis quos sapiente ipsam eaque reiciendis placeat veniam!
             </p>
         </div>
     )
