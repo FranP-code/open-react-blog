@@ -18,6 +18,9 @@ function App() {
           <Route path="/create-account">
             <PageThree />
           </Route>
+          <Route path="/:username/write">
+            {/* <PageFive /> */}
+          </Route>
           <Route path="/:username">
             <PageFour />
           </Route>

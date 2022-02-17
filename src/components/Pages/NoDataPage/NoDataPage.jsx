@@ -6,7 +6,7 @@ const NoDataPage = (props) => {
     const NoDataPageStyles = styled.div`
         
         width: 100%;
-        height: 100vh;
+        height: 80vh;
 
         display: flex;
         justify-content: center;
@@ -24,6 +24,14 @@ const NoDataPage = (props) => {
         h2 {
             margin: 5vh 0px 2vh 0px;
             color: ${() => props.color}
+        }
+
+        .titles {
+            margin: 5vh 0px 2vh 0px;
+
+            h2 {
+                margin: 0;
+            }
         }
 
         a {

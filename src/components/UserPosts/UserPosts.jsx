@@ -4,6 +4,7 @@ import styled from 'styled-components'
 import TitleTwo from '../Titles/TitleTwo'
 import Article from './Article'
 import { faFaceGrinBeamSweat } from '@fortawesome/free-solid-svg-icons'
+import NoDataPage from '../Pages/NoDataPage/NoDataPage'
 
 const UserPosts = ({posts}) => {
 
@@ -116,16 +117,16 @@ const UserPosts = ({posts}) => {
         <ArticlesContainerStyles className="animate__animated animate__fadeIn">
             {
                 posts[0].length < 1 ?
-                <div className="no-data">
-
-                    <FontAwesomeIcon
-                        icon={faFaceGrinBeamSweat}
-                        />
-                    <div className="titles">
-                        <TitleTwo text={"What shall we use to fill the empty spaces...?"}/>
-                        <TitleTwo text={"- Pink Floyd"}/>
-                    </div>
-                    </div>
+                    <NoDataPage color="#aabdd6">
+                        <FontAwesomeIcon
+                            icon={faFaceGrinBeamSweat}
+                            color="#aabdd6"
+                            />
+                        <div className="titles">
+                            <TitleTwo text={"What shall we use to fill the empty spaces...?"}/>
+                            <TitleTwo text={"- Pink Floyd"}/>
+                        </div>
+                    </NoDataPage>
                 : null
                     
             }
