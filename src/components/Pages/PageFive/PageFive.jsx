@@ -9,14 +9,21 @@ import ButtonComponent from '../../ButtonComponent/ButtonComponent'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import checkUsernameExistance from './Firebase Querys/checkUsernameExistance';
 import Loading from '../../Loading/Loading';
+import { useSnackbar } from 'notistack';
+import moment from 'moment';
+import addPostToDatabase from './Firebase Querys/addPostToDatabase';
 
 const PageFive = ({history}) => {
+
+    const readingTime = require('reading-time/lib/reading-time');
 
     const title = useRef('')
     const [post, setPost] = useState("");
     const username = useParams().username
     const [loading, setLoading] = useState(true)
     const [userLoged, setUserLoged] = useState(false)
+
+    const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     
     React.useEffect(() => {
 
@@ -43,6 +50,105 @@ const PageFive = ({history}) => {
 
         pageFiveHandler()
     }, [])
+
+    async function submitFunction() {
+
+        const waitSnackbar = enqueueSnackbar("Processing data.", {
+            variant: "info"
+        })
+
+        const postTitle = title.current.value
+
+        //* Validation
+        if (postTitle === "" || !postTitle) {
+            enqueueSnackbar("Please, write a title for your post.", {
+                variant: "error"
+            })
+            return
+        }
+
+        if (post === "" || !post) {
+            enqueueSnackbar("Please, write your post.", {
+                variant: "error"
+            })
+            return
+        }
+
+        //* Check if user is loged
+        const data = await checkUsernameExistance(username)
+        const auth = getAuth()
+        
+            onAuthStateChanged(auth, (user) => {
+
+                console.log(user.uid)
+                console.log(data.id)
+                console.log(user.uid === data.id)
+        
+                if (user.uid === data.id) {
+                    
+                } else {
+                    history.push('/')
+                }
+            })
+        
+        //* Inizializate object
+        const postObject = {}
+        
+        //* Add title
+        postObject.title = postTitle
+        
+        //* Add post data
+        postObject.post = post
+
+        //* Add short post data
+        let shortPost = post
+        shortPost = shortPost.substring(0, 100).split(' ')
+        shortPost.pop()
+        shortPost = shortPost.join(' ')
+
+        if (shortPost.slice(-1) !== '.') {
+            console.log('STRING NO TERMINA CON PUNTO')
+            shortPost = shortPost + '...'
+        } else {
+            console.log('STRING TERMINA CON PUNTO')
+        }
+    
+        console.log(shortPost)
+        postObject.shortPost = shortPost
+
+        //* Add date
+        console.log(moment().unix())
+        postObject.date = {seconds: moment().unix()}
+
+        //* Add reading time
+        postObject.readingTime = readingTime(post).text.replace(' read', '.')
+        console.log(postObject.readingTime)
+        
+        //* Add post to DB
+        const result = await addPostToDatabase(data.id, postObject)
+
+        closeSnackbar(waitSnackbar)
+
+        if (result === 'success') {
+            enqueueSnackbar("All right!, post published. Coming back to profile in 3 seconds...", {
+                variant: 'success'
+            })
+
+            setTimeout(() => {
+                history.push(`/${username}`)
+            }, 3000)
+
+            return
+        }
+
+        if (result === 'error') {
+            enqueueSnackbar("There has been an error, please try again later.", {
+                variant: "error"
+            })
+
+            return
+        }
+    }
     
     return (
         <>
@@ -74,6 +180,7 @@ const PageFive = ({history}) => {
                             text="Submit Post"
                             color="#4CAF50"
                             className="submit"
+                            onClickFunction={submitFunction}
                         />
                     </div>
                 : null
