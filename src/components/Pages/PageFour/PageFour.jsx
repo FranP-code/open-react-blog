@@ -31,7 +31,6 @@ const PageFour = () => {
       const docs = await returnAndFormatUsernameDocuments(checkUsernameData.id)
       setPosts(docs)
     }
-    
 
     setLoading(false)
   }

@@ -1,11 +1,40 @@
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
 import styled from 'styled-components'
 import TitleTwo from '../Titles/TitleTwo'
 import Article from './Article'
+import { faFaceGrinBeamSweat } from '@fortawesome/free-solid-svg-icons'
 
 const UserPosts = ({posts}) => {
 
     const ArticlesContainerStyles = styled.div`
+
+        width: 100%;
+        height: 50vh;    
+
+        .no-data {
+
+            width: 100%;
+            height: 100%;
+
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-direction: column;
+   
+            svg {
+                width: 25vw;
+                max-width: 250px;
+                height: 25vw;
+                max-height: 250px;
+                color: #aabdd6;
+            }
+
+            .titles {
+                margin-top: 5vh;
+                color: #aabdd6;
+            }
+        }
         
         .articles-container {
 
@@ -85,6 +114,21 @@ const UserPosts = ({posts}) => {
   
     return (
         <ArticlesContainerStyles className="animate__animated animate__fadeIn">
+            {
+                posts[0].length < 1 ?
+                <div className="no-data">
+
+                    <FontAwesomeIcon
+                        icon={faFaceGrinBeamSweat}
+                        />
+                    <div className="titles">
+                        <TitleTwo text={"What shall we use to fill the empty spaces...?"}/>
+                        <TitleTwo text={"- Pink Floyd"}/>
+                    </div>
+                    </div>
+                : null
+                    
+            }
             <div className='articles-container'>
                 <div className="articles-row row-1">
                     {
