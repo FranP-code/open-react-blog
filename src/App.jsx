@@ -9,6 +9,7 @@ import {
 } from "react-router-dom";
 import PageThree from './components/Pages/PageThree/PageThree';
 import PageFour from './components/Pages/PageFour/PageFour';
+import PageFive from './components/Pages/PageFive/PageFive';
 
 function App() {
   return (
@@ -19,7 +20,7 @@ function App() {
             <PageThree />
           </Route>
           <Route path="/:username/write">
-            {/* <PageFive /> */}
+            <PageFive />
           </Route>
           <Route path="/:username">
             <PageFour />

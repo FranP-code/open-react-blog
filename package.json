@@ -12,6 +12,7 @@
     "@testing-library/jest-dom": "^5.16.2",
     "@testing-library/react": "^12.1.2",
     "@testing-library/user-event": "^13.5.0",
+    "@uiw/react-md-editor": "^3.9.5",
     "animate.css": "^4.1.1",
     "firebase": "^9.6.6",
     "moment": "^2.29.1",

@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faHourglass } from '@fortawesome/free-solid-svg-icons'
 
 
-const Loading = ({loading}) => {
+const Loading = ({loading, userLoged}) => {
 
     const LoadingStyles = styled.div`
         
@@ -73,12 +73,12 @@ const Loading = ({loading}) => {
     
     return (
         <LoadingStyles
-            className={loading ? "" : "animate__animated animate__fadeOut stop"}
-            style={{zIndex: loading ? "9001" : "-9001"}}
+            className={loading && !userLoged ? "" : "animate__animated animate__fadeOut stop"}
+            style={{zIndex: loading && !userLoged? "9001" : "-9001"}}
         >
             <FontAwesomeIcon
                 icon={faHourglass}
-                className={loading ? "" : "stop"}
+                className={loading && !userLoged ? "" : "stop"}
             />
             <TitleTwo text={"Loading"}/>
         </LoadingStyles>

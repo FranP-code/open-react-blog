@@ -1,0 +1,86 @@
+.page {
+
+    display: flex;
+    flex-direction: column;
+
+    height: auto;
+
+    .title-container {
+
+        width: 94vw;
+
+        display: flex;
+        align-items: center;
+
+        padding-top: 2vh;
+        padding-bottom: 1vh;
+
+        border-bottom: 3px solid #000;
+        
+        $arrowWidth: 5vw;
+
+        .back-arrow {
+
+            min-width: 80px;
+            width: $arrowWidth;
+            max-width: 250px;
+            
+            min-height: 80px;
+            height: $arrowWidth - 1vw;
+            max-height: 250px;
+
+            margin-right: 2vw;
+
+            cursor: pointer;
+        }
+
+        .title-input {
+
+            width: calc(94vw - $arrowWidth - 2vw);
+
+            font-weight: bold;
+            overflow-wrap: break-word;
+            word-wrap: break-word;
+            word-break: break-all;
+            
+            // FUCK, I CAN'T DO THE BREAK WORD IN A FUCKING INPUT. WTF CHROMIUM
+
+            border: none;
+            outline: none;
+
+            &::placeholder {
+
+                color: #afafaf;
+            }
+        }
+    }
+
+    .w-md-editor {
+
+        height: 45vh !important;
+
+        margin-top: 3vh;
+        padding-top: 5vh;
+
+        .w-md-editor-content {
+
+            height: 95% !important;
+        }
+    }
+
+    .guide-pragraph {
+
+        margin-top: 1vh;
+
+        a {
+            color: rgb(44, 135, 255);
+        }
+    }
+
+    .submit {
+
+        margin: 5vh 0px;
+
+        align-self: center;
+    }
+}

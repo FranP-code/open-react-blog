@@ -1,0 +1,55 @@
+.page {
+  display: flex;
+  flex-direction: column;
+  height: auto;
+}
+.page .title-container {
+  width: 94vw;
+  display: flex;
+  align-items: center;
+  padding-top: 2vh;
+  padding-bottom: 1vh;
+  border-bottom: 3px solid #000;
+}
+.page .title-container .back-arrow {
+  min-width: 80px;
+  width: 5vw;
+  max-width: 250px;
+  min-height: 80px;
+  height: 4vw;
+  max-height: 250px;
+  margin-right: 2vw;
+  cursor: pointer;
+}
+.page .title-container .title-input {
+  width: 87vw;
+  font-weight: bold;
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  word-break: break-all;
+  border: none;
+  outline: none;
+}
+.page .title-container .title-input::placeholder {
+  color: #afafaf;
+}
+.page .w-md-editor {
+  height: 45vh !important;
+  margin-top: 3vh;
+  padding-top: 5vh;
+}
+.page .w-md-editor .w-md-editor-content {
+  height: 95% !important;
+}
+.page .guide-pragraph {
+  margin-top: 1vh;
+}
+.page .guide-pragraph a {
+  color: #2c87ff;
+}
+.page .submit {
+  margin: 5vh 0px;
+  align-self: center;
+}
+
+/*# sourceMappingURL=PageFive.css.map */
