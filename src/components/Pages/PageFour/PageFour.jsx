@@ -45,7 +45,7 @@ const PageFour = () => {
       {
         displayUsername ?
           <>
-            <UserHeader displayUsername={displayUsername} signedIn={userLoged}/>
+            <UserHeader username={username} displayUsername={displayUsername} signedIn={userLoged}/>
             <UserPosts posts={posts}/>
           </>
         : 
