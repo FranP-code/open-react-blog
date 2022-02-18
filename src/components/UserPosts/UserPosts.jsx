@@ -1,17 +1,18 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React from 'react'
+import React, { useRef } from 'react'
 import styled from 'styled-components'
 import TitleTwo from '../Titles/TitleTwo'
 import Article from './Article'
 import { faFaceGrinBeamSweat } from '@fortawesome/free-solid-svg-icons'
 import NoDataPage from '../Pages/NoDataPage/NoDataPage'
 
-const UserPosts = ({posts}) => {
+const UserPosts = ({formatedPosts, getMoreData}) => {
 
     const ArticlesContainerStyles = styled.div`
 
         width: 100%;
-        height: 50vh;    
+        /* height: 50vh;     */
+        padding-bottom: 8vh;
 
         .no-data {
 
@@ -112,50 +113,55 @@ const UserPosts = ({posts}) => {
 
         }
     `
-  
     return (
-        <ArticlesContainerStyles className="animate__animated animate__fadeIn">
+        <ArticlesContainerStyles>
             {
-                posts[0].length < 1 ?
-                    <NoDataPage color="#aabdd6">
-                        <FontAwesomeIcon
-                            icon={faFaceGrinBeamSweat}
-                            color="#aabdd6"
-                            />
-                        <div className="titles">
-                            <TitleTwo text={"What shall we use to fill the empty spaces...?"}/>
-                            <TitleTwo text={"- Pink Floyd"}/>
+                formatedPosts ?
+                    <>
+                        {
+                            formatedPosts[0].length < 1 ?
+                                <NoDataPage color="#aabdd6">
+                                    <FontAwesomeIcon
+                                        icon={faFaceGrinBeamSweat}
+                                        color="#aabdd6"
+                                        />
+                                    <div className="titles">
+                                        <TitleTwo text={"What shall we use to fill the empty spaces...?"}/>
+                                        <TitleTwo text={"- Pink Floyd"}/>
+                                    </div>
+                                </NoDataPage>
+                            : null
+                                
+                        }
+                        <div className='articles-container'>
+                            <div className="articles-row row-1">
+                                {
+                                    formatedPosts[0].map((post, index) => (
+
+                                        <Article post={post} key={index}/>
+                                    ))
+                                }
+                            </div>
+                            <div className="articles-row row-2">
+                                {
+                                    formatedPosts[1].map((post, index) => (
+
+                                        <Article post={post} key={index}/>
+                                    ))
+                                }
+                            </div>
+                            <div className="articles-row row-3">
+                                {
+                                    formatedPosts[2].map((post, index) => (
+
+                                        <Article post={post} key={index}/>
+                                    ))
+                                }
+                            </div>
                         </div>
-                    </NoDataPage>
+                    </>
                 : null
-                    
             }
-            <div className='articles-container'>
-                <div className="articles-row row-1">
-                    {
-                        posts[0].map((post, index) => (
-
-                            <Article post={post} key={index}/>
-                        ))
-                    }
-                </div>
-                <div className="articles-row row-2">
-                    {
-                        posts[1].map((post, index) => (
-
-                            <Article post={post} key={index}/>
-                        ))
-                    }
-                </div>
-                <div className="articles-row row-3">
-                    {
-                        posts[2].map((post, index) => (
-
-                            <Article post={post} key={index}/>
-                        ))
-                    }
-                </div>
-            </div>
         </ArticlesContainerStyles>
     )
 }

@@ -25,7 +25,8 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
             top: 9vh;
             z-index: 9000;
             
-            background: #0e1855bd;
+            /* background: #0e1855bd; */
+            background: radial-gradient( circle farthest-corner at 10% 20%,  rgba(90,92,106,0.9) 0%, rgba(32,45,58,0.9) 81.3% ); //https://cssgradient.io/gradient-backgrounds/
 
             padding: 2vh 2vw;
             border-radius: 3px;
