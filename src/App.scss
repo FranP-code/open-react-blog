@@ -30,6 +30,16 @@ header {
     }
 }
 
+a {
+
+    color: rgb(44, 135, 255);
+  
+    &::visited {
+  
+        color: rgb(44, 135, 255);
+    }
+}
+
 .title-one::selection, .title-two::selection, #rotatory-text-element::selection {
 
   background-color: #ffe83d;

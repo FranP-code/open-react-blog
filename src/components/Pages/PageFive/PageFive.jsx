@@ -1,6 +1,4 @@
 import React, { useRef, useState } from 'react'
-import { faArrowLeft } from '@fortawesome/free-solid-svg-icons'
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import "./PageFive.css"
 import MDEditor from '@uiw/react-md-editor';
 import {withRouter} from 'react-router'
@@ -12,6 +10,7 @@ import Loading from '../../Loading/Loading';
 import { useSnackbar } from 'notistack';
 import moment from 'moment';
 import addPostToDatabase from './Firebase Querys/addPostToDatabase';
+import GoBackArrow from '../../GoBackArrow/GoBackArrow';
 
 const PageFive = ({history}) => {
 
@@ -161,12 +160,7 @@ const PageFive = ({history}) => {
                 userLoged ? 
                     <div className="page">
                         <div className="animate_animated animate__fadeIn title-container">
-                            <FontAwesomeIcon
-                                icon={faArrowLeft}
-                                color="#aabbdd"
-                                className='back-arrow'
-                                onClick={() => history.push(`/${username}`)}
-                            />
+                            <GoBackArrow onClickFunction={() => history.push(`/${username}`)}/>
                             <input type="text" ref={title} className='title-input title-one' placeholder='Title'/>
                         </div>
                         <MDEditor

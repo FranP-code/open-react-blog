@@ -20,6 +20,13 @@ header * h2, header header h2 {
   font-size: 29pt;
 }
 
+a {
+  color: #2c87ff;
+}
+a::visited {
+  color: #2c87ff;
+}
+
 .title-one::selection, .title-two::selection, #rotatory-text-element::selection {
   background-color: #ffe83d;
   color: #000;

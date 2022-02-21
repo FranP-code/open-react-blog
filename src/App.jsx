@@ -10,6 +10,7 @@ import {
 import PageThree from './components/Pages/PageThree/PageThree';
 import PageFour from './components/Pages/PageFour/PageFour';
 import PageFive from './components/Pages/PageFive/PageFive';
+import PageSix from './components/Pages/PageSix/PageSix';
 
 function App() {
   return (
@@ -18,6 +19,9 @@ function App() {
         <Switch>
           <Route path="/create-account">
             <PageThree />
+          </Route>
+          <Route path="/:username/post/:postId">
+            <PageSix />
           </Route>
           <Route path="/:username/write">
             <PageFive />

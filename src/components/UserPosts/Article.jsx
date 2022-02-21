@@ -1,41 +1,36 @@
 import React from 'react'
 import moment from 'moment'
 import TitleTwo from '../Titles/TitleTwo'
+import { withRouter } from 'react-router'
 
-const Article = ({post}) => {
+const Article = ({post, history, username}) => {
 
-    // React.useEffect(() => {
-
-    //     if (post.status === "empty") {
-    //         post.title = 'Empty post'
-    //         post.date.seconds = 334717200
-    //         post.readingTime = "6 min."
-    //         post.shortPost = "This is a post to reserve space. Ignore it please..."
-    //     }
-    // }, [])
+    function clickHandler() {
+        history.push(`/${username}/post/${post.id}`)
+    }
     
     return (
-        <div className={post.status === "empty" ? "article empty" : "article"}>
+        <div className={post.data.status === "empty" ? "article empty" : "article"} onClick={clickHandler}>
             <div className="top">
                 <TitleTwo>
-                    {post.title}
+                    {post.data.title}
                 </TitleTwo>
                 <div className='aditional-data'>
                     <span className='date'>
-                        {moment(moment.unix(post.date.seconds)).format('L')}
+                        {moment(moment.unix(post.data.date.seconds)).format('L')}
                     </span>
                     <span className="lecture-time">
-                        {post.readingTime}
+                        {post.data.readingTime}
                     </span>
             </div>
             </div>
             <p>
                 {
-                    post.shortPost
+                    post.data.shortPost
                 }
             </p>
         </div>
     )
 }
 
-export default Article
+export default withRouter(Article)

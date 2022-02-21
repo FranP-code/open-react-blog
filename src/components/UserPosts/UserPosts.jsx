@@ -6,7 +6,7 @@ import Article from './Article'
 import { faFaceGrinBeamSweat } from '@fortawesome/free-solid-svg-icons'
 import NoDataPage from '../Pages/NoDataPage/NoDataPage'
 
-const UserPosts = ({formatedPosts, getMoreData}) => {
+const UserPosts = ({formatedPosts, getMoreData, username}) => {
 
     const ArticlesContainerStyles = styled.div`
 
@@ -138,7 +138,7 @@ const UserPosts = ({formatedPosts, getMoreData}) => {
                                 {
                                     formatedPosts[0].map((post, index) => (
 
-                                        <Article post={post} key={index}/>
+                                        <Article post={post} key={index} username={username}/>
                                     ))
                                 }
                             </div>
@@ -146,7 +146,7 @@ const UserPosts = ({formatedPosts, getMoreData}) => {
                                 {
                                     formatedPosts[1].map((post, index) => (
 
-                                        <Article post={post} key={index}/>
+                                        <Article post={post} key={index} username={username}/>
                                     ))
                                 }
                             </div>
@@ -154,7 +154,7 @@ const UserPosts = ({formatedPosts, getMoreData}) => {
                                 {
                                     formatedPosts[2].map((post, index) => (
 
-                                        <Article post={post} key={index}/>
+                                        <Article post={post} key={index} username={username}/>
                                     ))
                                 }
                             </div>

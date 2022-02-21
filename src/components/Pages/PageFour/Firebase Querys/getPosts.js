@@ -14,8 +14,12 @@ const getPosts = async (id, setLastPost) => {
         const q = query(collection(db, `users/${id}/posts`), orderBy("date", "desc"), limit(21))
         const result = await getDocs(q)
         setLastPost(result.docs[result.docs.length-1])
-        const docs = result.docs.map(doc => doc.data())
-
+        const docs = result.docs.map(doc => 
+            doc = {
+                data: doc.data(),
+                id: doc.id
+            }
+        )
         console.log(docs)
         return docs
 

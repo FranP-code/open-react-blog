@@ -11,7 +11,12 @@ const getMorePosts = async (id, lastDocument, setLastPost) => {
 
         const result = await getDocs(q)
         setLastPost(result.docs[result.docs.length-1])
-        const docs = result.docs.map(doc => doc.data())
+        const docs = result.docs.map(doc => 
+            doc = {
+                data: doc.data(),
+                id: doc.id
+            }
+        )
         console.log(docs)
         return docs
     } catch (error) {

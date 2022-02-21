@@ -16,23 +16,6 @@
         padding-bottom: 1vh;
 
         border-bottom: 3px solid #000;
-        
-        $arrowWidth: 5vw;
-
-        .back-arrow {
-
-            min-width: 80px;
-            width: $arrowWidth;
-            max-width: 250px;
-            
-            min-height: 80px;
-            height: $arrowWidth - 1vw;
-            max-height: 250px;
-
-            margin-right: 2vw;
-
-            cursor: pointer;
-        }
 
         .title-input {
 

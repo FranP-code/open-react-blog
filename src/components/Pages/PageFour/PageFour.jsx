@@ -34,7 +34,6 @@ const PageFour = () => {
       checkUsernameLoged(checkUsernameData.id, setUserLoged)
       
       const docs = await getPosts(checkUsernameData.id, setLastPost)
-      // setLastPost(docs[docs.length - 1])
       const formatedDocs = formatDocs(docs)
       setFormatedPosts(formatedDocs)
     }
@@ -116,7 +115,7 @@ const PageFour = () => {
         displayUsername ?
           <>
             <UserHeader username={username} displayUsername={displayUsername} signedIn={userLoged}/>
-            <UserPosts formatedPosts={formatedPosts} getMoreData={getMoreData}/>
+            <UserPosts formatedPosts={formatedPosts} getMoreData={getMoreData} username={username}/>
           </>
         : 
         <NoDataPage color="#aabdd6">
