@@ -1,12 +1,12 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useRef } from 'react'
+import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
 import TitleTwo from '../Titles/TitleTwo'
 import Article from './Article'
 import { faFaceGrinBeamSweat } from '@fortawesome/free-solid-svg-icons'
 import NoDataPage from '../Pages/NoDataPage/NoDataPage'
 
-const UserPosts = ({formatedPosts, getMoreData, username}) => {
+const UserPosts = ({rawPosts, formatedPosts, getMoreData, username}) => {
 
     const ArticlesContainerStyles = styled.div`
 
@@ -45,14 +45,16 @@ const UserPosts = ({formatedPosts, getMoreData, username}) => {
             
             align-items: flex-start;
         
-            .articles-row {
+            .articles-column {
                 
                 width: calc(33.3% - 2vw);
 
-                &.row-2 {
+                &.column-2 {
 
                     margin: 0px 2vw;
                 }
+            }
+            .articles-column, .articles-raw {
 
                 .article {
 
@@ -107,16 +109,36 @@ const UserPosts = ({formatedPosts, getMoreData, username}) => {
                         }
                     }
 
-                }
-                
+                }                
             }
 
         }
     `
+
+    const [structureOfPosts, setStructureOfPosts] = useState(false)
+
+    function defineStructureOfPosts() {
+        console.log("defineStructureOfPosts Executed")
+
+        const width = document.body.clientWidth
+
+        if (width <= 900) {
+            setStructureOfPosts("Raw")
+        } else {
+            setStructureOfPosts("Columns")
+        }
+    }
+
+    React.useEffect(() => {
+        defineStructureOfPosts()
+
+        window.addEventListener('resize', defineStructureOfPosts)
+    }, [])
+
     return (
         <ArticlesContainerStyles>
             {
-                formatedPosts ?
+                structureOfPosts === "Columns" ?
                     <>
                         {
                             formatedPosts[0].length < 1 ?
@@ -134,7 +156,7 @@ const UserPosts = ({formatedPosts, getMoreData, username}) => {
                                 
                         }
                         <div className='articles-container'>
-                            <div className="articles-row row-1">
+                            <div className="articles-column column-1">
                                 {
                                     formatedPosts[0].map((post, index) => (
 
@@ -142,7 +164,7 @@ const UserPosts = ({formatedPosts, getMoreData, username}) => {
                                     ))
                                 }
                             </div>
-                            <div className="articles-row row-2">
+                            <div className="articles-column column-2">
                                 {
                                     formatedPosts[1].map((post, index) => (
 
@@ -150,7 +172,7 @@ const UserPosts = ({formatedPosts, getMoreData, username}) => {
                                     ))
                                 }
                             </div>
-                            <div className="articles-row row-3">
+                            <div className="articles-column column-3">
                                 {
                                     formatedPosts[2].map((post, index) => (
 
@@ -160,6 +182,20 @@ const UserPosts = ({formatedPosts, getMoreData, username}) => {
                             </div>
                         </div>
                     </>
+                : null
+            }
+            {
+                structureOfPosts === "Raw" ?
+                    <div className='articles-container'>
+                        <div className="articles-raw">
+
+                        {
+                            rawPosts.map((post, index) => (
+                                <Article post={post} key={index} username={username}/>
+                            ))
+                        }
+                        </div>
+                    </div>
                 : null
             }
         </ArticlesContainerStyles>

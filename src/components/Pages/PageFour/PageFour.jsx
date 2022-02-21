@@ -21,6 +21,7 @@ const PageFour = () => {
   const username = useParams().username
   const [userLoged, setUserLoged] = useState(false)
   const [lastPost, setLastPost] = useState(false)
+  const [rawPosts, setRawPosts] = useState([])
   const [formatedPosts, setFormatedPosts] = useState([[], [], []])
   const [executionGetMoreData, setExecutionGetMoreData] = useState(false)
 
@@ -34,6 +35,8 @@ const PageFour = () => {
       checkUsernameLoged(checkUsernameData.id, setUserLoged)
       
       const docs = await getPosts(checkUsernameData.id, setLastPost)
+      setRawPosts(docs)
+      
       const formatedDocs = formatDocs(docs)
       setFormatedPosts(formatedDocs)
     }
@@ -52,6 +55,7 @@ const PageFour = () => {
     
     console.log(lastPost)
     const docs = await getMorePosts(userId, lastPost, setLastPost)
+    setRawPosts([...rawPosts, ...docs])
 
     const formatedDocs = formatDocs(docs)
     const formatedPostCopy = formatedPosts
@@ -112,10 +116,10 @@ const PageFour = () => {
     <div className='page'>
       <Loading loading={loading}/>
       {
-        displayUsername ?
+        displayUsername && !loading ?
           <>
             <UserHeader username={username} displayUsername={displayUsername} signedIn={userLoged}/>
-            <UserPosts formatedPosts={formatedPosts} getMoreData={getMoreData} username={username}/>
+            <UserPosts rawPosts={rawPosts} formatedPosts={formatedPosts} getMoreData={getMoreData} username={username}/>
           </>
         : 
         <NoDataPage color="#aabdd6">

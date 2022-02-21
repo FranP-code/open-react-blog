@@ -48,6 +48,17 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
             /* input[type="email"] {
             } */
          }
+
+        @media (max-width: 640px) {
+            height: 16vh;
+
+            flex-direction: column;
+
+            .header-button {
+                width: 94vw !important;
+
+            }
+        }
     `
 
     const [loginFormHidden, setLoginFormHidden] = useState(true)
@@ -165,6 +176,7 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
                 onClickFunction={signedIn ? redirectPage : alternateLoginForm}
                 showHover={!signedIn ? true : false}      
                 hoverText={!signedIn ? "This is your account?" : null}
+                className="header-button"
             />
             {
                 !signedIn ?
