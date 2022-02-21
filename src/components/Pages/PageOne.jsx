@@ -16,6 +16,10 @@ const PageOne = () => {
         
         height: 70vh;
         margin-bottom: 5vh;
+
+        @media (max-width: 640px) {
+            height: 65vh;
+        }
     `
 
     const MainContent = styled.div`

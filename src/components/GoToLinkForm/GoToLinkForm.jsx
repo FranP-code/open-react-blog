@@ -50,6 +50,32 @@ const GoToLinkForm = () => {
                 }
             }
         }
+
+        @media (max-width: 640px) {
+            form {
+                flex-direction: column;
+                align-items: center;
+
+                input {
+                    box-shadow: none;
+                    border: #000 solid 2px;
+                }
+
+                input[type="text"] {
+                    width: 90vw;
+                    height: 5vh;
+                    font-size: 18pt;
+                }
+                input[type="submit"] {
+                    width: 90vw;
+                    height: 5vh;
+                    font-size: 18pt;
+
+                    margin-top: 1.5vh;
+                    /* box-shadow: none; */
+                }
+            }
+        }
     `
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 

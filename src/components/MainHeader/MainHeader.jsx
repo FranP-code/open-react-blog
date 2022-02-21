@@ -2,6 +2,8 @@ import React from 'react'
 import styled from 'styled-components'
 
 import logo from '../../logo.png'
+import TitleOne from '../Titles/TitleOne'
+import TitleTwo from '../Titles/TitleTwo'
 
 const MainHeader = (props) => {
 
@@ -50,14 +52,28 @@ const MainHeader = (props) => {
                 }
             }
         }
+
+        @media (max-width: 640px) {
+
+            height: 20vh;
+            padding-top: 2vh;
+            justify-content: center;
+
+            .logo-container {
+
+                flex-direction: column;
+            }
+        }
     `
   
     return (
         <HeaderStyles>
             <div className="logo-container">
                 <img src={logo} alt="" />
-                <h1>ORB</h1>
-                <h2>(Open React Blog)</h2>
+                {/* <h1>ORB</h1>
+                <h2>(Open React Blog)</h2> */}
+                <TitleOne>ORB</TitleOne>
+                <TitleTwo>(Open React Blog)</TitleTwo>
             </div>
             <h2>{props.additionalText}</h2>
         </HeaderStyles>

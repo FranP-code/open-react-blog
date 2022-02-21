@@ -17,6 +17,10 @@ const PageTwo = () => {
         flex-direction: column;
         justify-content: space-around;
 
+        .ordered-list {
+            font-weight: initial;
+        }
+
         .form-container {
 
             height: 68vh;
@@ -33,11 +37,20 @@ const PageTwo = () => {
             h2 {
 
                 margin-bottom: 3vh;
+                font-weight: initial !important;
             }
 
             form {
 
                 margin-bottom: 5vh;
+            }
+        }
+
+        @media (max-width: 640px) {
+
+            .ordered-list {
+
+                width: 75vw;
             }
         }
     `

@@ -30,7 +30,7 @@ const OrderedList = ({typeOfList, title, data, typeOfData}) => {
             }
             {
                 typeOfList === 'title' ?
-                    <TitleStyles>
+                    <TitleStyles className="ordered-list">
                         {
                             typeOfData === 'text-data' ?
                                 data.map(element => (<div className='title-element'>{element}</div>))
