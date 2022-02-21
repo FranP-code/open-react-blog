@@ -8,8 +8,10 @@ import { withRouter } from 'react-router-dom'
 import TitleTwo from '../../Titles/TitleTwo'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-import { faFaceGrinBeam } from '@fortawesome/free-solid-svg-icons'
+import { faFaceDizzy, faFaceGrinBeam } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import NoDataPage from '../NoDataPage/NoDataPage'
+import Loading from '../../Loading/Loading'
 
 const PageSix = ({history}) => {
 
@@ -85,9 +87,11 @@ const PageSix = ({history}) => {
     
     const [post, setPost] = useState(false)
     const [displayUsername, setDisplayUsername] = useState(false)
-
     const username = useParams().username
     const postId = useParams().postId
+    
+    const [loading, setLoading] = useState(true)
+    const [postFound, setPostFound] = useState(false)
 
     async function pageSixHandler() {
         const usernameData = await checkUsernameExistance(username)
@@ -99,42 +103,64 @@ const PageSix = ({history}) => {
 
         if (postData.state === "error") {
 
-            //! SHOW NO DATA PAGE WITH 'ERROR POST DONT FOUND'
+            setLoading(false)
             return
         }
-
+        setPostFound(true)
         setPost({
             title: postData.title,
             data: postData.post
         })
+
+        setLoading(false)
     }
     React.useEffect(() => {
         pageSixHandler()
     }, [])
 
     return (
-        <PageSixStyles className="page">
-            <div className="user-data">
-                <FontAwesomeIcon 
-                    icon={faFaceGrinBeam}
-                    color="#aabbdd"
-                    className='user-icon'
-                />
-                <h3>
-                    {displayUsername}
-                </h3>
-                <Link to={`/${username}`} children="Profile Page"/>
-            </div>
-            <div className="content">
-                <header>
-                    {/* <GoBackArrow onClickFunction={() => history.push(`/${username}`)}/> */}
-                    <TitleTwo>
-                        {post.title}
-                    </TitleTwo>
-                </header>
-                <MDEditor.Markdown source={post.data} />
-            </div>
-        </PageSixStyles>
+        <>  
+            <Loading loading={loading}/>
+            {
+                !loading && !postFound ?
+                    <NoDataPage>
+                        <FontAwesomeIcon
+                            icon={faFaceDizzy}
+                            color="#aabbdd"
+                            className='user-icon'
+                        />
+                        <h2>Post don't found</h2>
+                        <Link to={`/${username}`} children="Profile Page"/>
+                    </NoDataPage>
+                : null
+            }
+            {
+                !loading && postFound ? 
+                    <PageSixStyles className="page">
+                        <div className="user-data">
+                            <FontAwesomeIcon 
+                                icon={faFaceGrinBeam}
+                                color="#aabbdd"
+                                className='user-icon'
+                            />
+                            <h3>
+                                {displayUsername}
+                            </h3>
+                            <Link to={`/${username}`} children="Profile Page"/>
+                        </div>
+                        <div className="content">
+                            <header>
+                                {/* <GoBackArrow onClickFunction={() => history.push(`/${username}`)}/> */}
+                                <TitleTwo>
+                                    {post.title}
+                                </TitleTwo>
+                            </header>
+                            <MDEditor.Markdown source={post.data} />
+                        </div>
+                    </PageSixStyles>
+                : null
+            }
+        </>
     )
 }
 
