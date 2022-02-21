@@ -5,69 +5,71 @@ import logo from '../../logo.png'
 import TitleOne from '../Titles/TitleOne'
 import TitleTwo from '../Titles/TitleTwo'
 
+import './Header.css'
+
 const MainHeader = (props) => {
 
-    const HeaderStyles = styled.header`
+    // const HeaderStyles = styled.header`
         
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+    //     display: flex;
+    //     justify-content: space-between;
+    //     align-items: center;
 
-        height: 15vh;
+    //     height: 15vh;
 
-        .logo-container {
+    //     .logo-container {
 
-            display: flex;
-            align-items: center;
+    //         display: flex;
+    //         align-items: center;
 
-            * {
+    //         * {
 
-                margin-right: 1vw;
-            }
-            img {
+    //             margin-right: 1vw;
+    //         }
+    //         img {
 
-                height: 8vh;
+    //             height: 8vh;
 
-                &:hover{
+    //             &:hover{
 
-                    animation: rotateIcon 1.5s ease-out forwards;
-                }
+    //                 animation: rotateIcon 1.5s ease-out forwards;
+    //             }
 
-                @keyframes rotateIcon {
+    //             @keyframes rotateIcon {
 
-                    0% {
-                        transform: rotate(0deg);
-                        height: 8vh;
-                    }
+    //                 0% {
+    //                     transform: rotate(0deg);
+    //                     height: 8vh;
+    //                 }
 
-                    50% {
-                        transform: rotate(360deg);
-                        height: 8.5vh;
-                    }
+    //                 50% {
+    //                     transform: rotate(360deg);
+    //                     height: 8.5vh;
+    //                 }
 
-                    100% {
-                        transform: rotate(360deg);
-                        height: 8vh;
-                    }
-                }
-            }
-        }
+    //                 100% {
+    //                     transform: rotate(360deg);
+    //                     height: 8vh;
+    //                 }
+    //             }
+    //         }
+    //     }
 
-        @media (max-width: 640px) {
+    //     @media (max-width: 640px) {
 
-            height: 20vh;
-            padding-top: 2vh;
-            justify-content: center;
+    //         height: 20vh;
+    //         padding-top: 2vh;
+    //         justify-content: center;
 
-            .logo-container {
+    //         .logo-container {
 
-                flex-direction: column;
-            }
-        }
-    `
+    //             flex-direction: column;
+    //         }
+    //     }
+    // `
   
     return (
-        <HeaderStyles>
+        <header>
             <div className="logo-container">
                 <img src={logo} alt="" />
                 {/* <h1>ORB</h1>
@@ -75,8 +77,8 @@ const MainHeader = (props) => {
                 <TitleOne>ORB</TitleOne>
                 <TitleTwo>(Open React Blog)</TitleTwo>
             </div>
-            <h2>{props.additionalText}</h2>
-        </HeaderStyles>
+            <h2 className='additional-text'>{props.additionalText}</h2>
+        </header>
     )
 }
 

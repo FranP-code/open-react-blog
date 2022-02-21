@@ -1,0 +1,57 @@
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
+    height: 15vh;
+
+    .logo-container {
+
+        display: flex;
+        align-items: center;
+
+        * {
+
+            margin-right: 1vw;
+        }
+        img {
+
+            height: 8vh;
+
+            &:hover{
+
+                animation: rotateIcon 1.5s ease-out forwards;
+            }
+
+            @keyframes rotateIcon {
+
+                0% {
+                    transform: rotate(0deg);
+                    height: 8vh;
+                }
+
+                50% {
+                    transform: rotate(360deg);
+                    height: 8.5vh;
+                }
+
+                100% {
+                    transform: rotate(360deg);
+                    height: 8vh;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+
+        height: 20vh;
+        padding-top: 2vh;
+        justify-content: center;
+
+        .logo-container {
+
+            flex-direction: column;
+        }
+    }
+}

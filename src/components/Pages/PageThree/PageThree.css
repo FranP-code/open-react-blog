@@ -32,5 +32,28 @@
 #page-three .flex-container .account-form form Button {
   margin-top: 3vh;
 }
+@media (max-width: 900px) {
+  #page-three header .additional-text {
+    position: absolute;
+    top: -20%;
+  }
+  #page-three .flex-container {
+    flex-direction: column;
+  }
+  #page-three .flex-container .account-form, #page-three .flex-container .account-form form {
+    width: 94vw !important;
+  }
+  #page-three .flex-container .link-preview {
+    margin-left: 0;
+    margin-top: 8vh;
+  }
+  #page-three .flex-container .link-preview .title-two {
+    margin-top: 2.5vh;
+    font-size: 18pt;
+    display: flex;
+    flex-direction: column;
+    word-break: break-all;
+  }
+}
 
 /*# sourceMappingURL=PageThree.css.map */

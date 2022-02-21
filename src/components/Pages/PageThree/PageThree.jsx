@@ -34,31 +34,10 @@ const PageThree = (props) => {
 
         if (newUsername.includes(' ')) {
 
-            newUsername = newUsername.replace(' ', '-')
-            // const usernameTrimed = username.split(' ')
-            // console.log(usernameTrimed)
-            // console.log(typeof usernameTrimed)
-
-            // if (typeof username === 'object' && usernameTrimed.length > 1) {
-
-            //     let newUsername = ''
-
-            //     usernameTrimed.forEach((subString, index) => {
-
-            //         if (index === 0) {
-                        
-            //             newUsername = subString
-            //             return
-            //         }
-            //         newUsername = newUsername + '-' + subString
-            //     });
-                
+            newUsername = newUsername.replace(/\s/g, '-') // :0 https://flaviocopes.com/how-to-replace-whitespace-javascript/
         }
         
         setUsername(newUsername)
-
-        // document.getElementById('username-input').focus()
-    
     
     }, [displayUsername])
 

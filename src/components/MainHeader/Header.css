@@ -1,0 +1,51 @@
+header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 15vh;
+}
+header .logo-container {
+  display: flex;
+  align-items: center;
+}
+header .logo-container * {
+  margin-right: 1vw;
+}
+header .logo-container img {
+  height: 8vh;
+}
+header .logo-container img:hover {
+  animation: rotateIcon 1.5s ease-out forwards;
+}
+@keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg);
+    height: 8vh;
+  }
+  50% {
+    transform: rotate(360deg);
+    height: 8.5vh;
+  }
+  100% {
+    transform: rotate(360deg);
+    height: 8vh;
+  }
+}
+@media (max-width: 900px) {
+  header {
+    height: 30vh;
+    padding-top: 2vh;
+    justify-content: center;
+  }
+  header .logo-container {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 640px) {
+    header {
+        height: 20vh;
+    }
+}
+
+/*# sourceMappingURL=Header.css.map */
