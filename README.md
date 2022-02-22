@@ -11,7 +11,7 @@ A blog platform that allow to every user create his own profile and upload his p
 
 
 ## Demo
-
+![ORB Demo](https://i.ibb.co/mDQqvDt/1-Open-React-Blog-Demo-Ez-Gif.gif)
 You can visit and check it [here](https://open-react-blog.netlify.app/)
 ## Acknowledgements
 
