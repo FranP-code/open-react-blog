@@ -46,6 +46,8 @@ const PageSix = ({history}) => {
 
             h3 {
                 font-size: 18pt;
+                margin: 0px 2vw;
+                text-align: center;
             }
 
             a {
@@ -95,6 +97,11 @@ const PageSix = ({history}) => {
 
                 .user-icon {
                     margin: 0px 2vw;
+                }
+
+                h3 {
+                    margin: 0px 2vw;
+                    text-align: center;
                 }
 
                 a {
