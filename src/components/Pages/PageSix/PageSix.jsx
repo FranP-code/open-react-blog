@@ -55,10 +55,11 @@ const PageSix = ({history}) => {
             }
         }
         .content {
-            height: 100vh;
+            /* height: 100vh; */
             width: 70vw;
 
             padding: 0px 17vw;
+            margin-bottom: 2vh;
 
             border: 1px solid #c0d6ff;
             border-top: none;
