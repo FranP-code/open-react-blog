@@ -83,6 +83,41 @@ const PageSix = ({history}) => {
                 }
             }
         }
+
+        @media (max-width: 900px) {
+            flex-direction: column;
+
+            .user-data {
+                padding-top: 2vh;
+                width: 100%;
+
+                flex-direction: initial;
+
+                .user-icon {
+                    margin: 0px 2vw;
+                }
+
+                a {
+                    margin-left: 1vh;
+                    margin-top: 0;
+                    /* background-color: #66A3FF;
+                    
+                    color: #fff;
+                    text-decoration: none;
+                    font-weight: bold;
+                    padding: 1vh 2vw; */
+                }
+            }
+            .content {
+                border: none;
+                width: 100%;
+
+                header {
+                    height: 10vh;
+                    margin-top: 5vh;
+                }
+            }
+        }
     `
     
     const [post, setPost] = useState(false)
