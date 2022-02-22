@@ -11,18 +11,8 @@
   padding-bottom: 1vh;
   border-bottom: 3px solid #000;
 }
-.page .title-container .back-arrow {
-  min-width: 80px;
-  width: 5vw;
-  max-width: 250px;
-  min-height: 80px;
-  height: 4vw;
-  max-height: 250px;
-  margin-right: 2vw;
-  cursor: pointer;
-}
 .page .title-container .title-input {
-  width: 87vw;
+  width: 100%;
   font-weight: bold;
   overflow-wrap: break-word;
   word-wrap: break-word;
@@ -50,6 +40,41 @@
 .page .submit {
   margin: 5vh 0px;
   align-self: center;
+}
+
+@media (max-width: 640px) {
+  .page .w-md-editor {
+    width: 94vw !important;
+    height: 70vh !important;
+    word-break: break-all;
+  }
+  .page .w-md-editor .w-md-editor-toolbar {
+    height: auto !important;
+    display: flex;
+    flex-direction: column;
+  }
+  .page .w-md-editor .w-md-editor-toolbar :nth-child(1) {
+    align-self: flex-start;
+    margin-bottom: 1vh;
+  }
+  .page .w-md-editor .w-md-editor-toolbar :nth-child(2) {
+    align-self: flex-end;
+  }
+  .page .w-md-editor .w-md-editor-toolbar ul li button svg {
+    width: 21px;
+    height: 21px;
+  }
+  .page .w-md-editor .w-md-editor-content {
+    height: 76.5% !important;
+  }
+  .page .guide-pragraph {
+    width: 85vw;
+    word-break: break-all;
+    margin-top: 3vh;
+  }
+  .page .submit {
+    width: 35vw !important;
+  }
 }
 
 /*# sourceMappingURL=PageFive.css.map */

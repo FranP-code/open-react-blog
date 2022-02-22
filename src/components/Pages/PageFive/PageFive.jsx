@@ -21,6 +21,7 @@ const PageFive = ({history}) => {
     const username = useParams().username
     const [loading, setLoading] = useState(true)
     const [userLoged, setUserLoged] = useState(false)
+    const [MDeditorMobile, setMDEditorMobile] = useState(false)
 
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     
@@ -63,6 +64,7 @@ const PageFive = ({history}) => {
             enqueueSnackbar("Please, write a title for your post.", {
                 variant: "error"
             })
+            closeSnackbar(waitSnackbar)
             return
         }
 
@@ -70,6 +72,7 @@ const PageFive = ({history}) => {
             enqueueSnackbar("Please, write your post.", {
                 variant: "error"
             })
+            closeSnackbar(waitSnackbar)
             return
         }
 
@@ -148,6 +151,24 @@ const PageFive = ({history}) => {
             return
         }
     }
+
+    function defineMDEditorStyle() {
+        console.log("defineStructureOfPosts Executed")
+
+        const width = document.body.clientWidth
+
+        if (width <= 900) {
+            setMDEditorMobile(true)
+        } else {
+            setMDEditorMobile(false)
+        }
+    }
+
+    React.useEffect(() => {
+        defineMDEditorStyle()
+
+        window.addEventListener('resize', defineMDEditorStyle)
+    }, [])
     
     return (
         <>
@@ -167,6 +188,7 @@ const PageFive = ({history}) => {
                             value={post}
                             onChange={setPost}
                             className="animate_animated animate__fadeIn"
+                            // fullscreen={MDeditorMobile}
                         />
                         <p className='animate_animated animate__fadeIn guide-pragraph'>You don't know markdown? <a href="https://culturedcode.com/things/support/articles/4651820/">Here</a> is a guide and <a href="https://www.markdownguide.org/cheat-sheet/">here</a> is a Cheat Sheet!</p>
                         <ButtonComponent

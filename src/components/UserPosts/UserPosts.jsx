@@ -112,6 +112,10 @@ const UserPosts = ({rawPosts, formatedPosts, getMoreData, username}) => {
                 }                
             }
 
+            .articles-raw {
+                width: 94vw;
+            }
+
         }
     `
 

@@ -23,6 +23,13 @@ const GoBackArrow = ({onClickFunction}) => {
 
             cursor: pointer;
         }
+
+        @media (max-width: 640px) {
+            .back-arrow {
+                min-width: 42px;
+                min-height: 42px
+            }
+        }
     `
   return (
       <GoBackArrowStyles>

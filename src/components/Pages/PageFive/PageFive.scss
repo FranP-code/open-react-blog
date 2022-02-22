@@ -19,7 +19,7 @@
 
         .title-input {
 
-            width: calc(94vw - $arrowWidth - 2vw);
+            width: 100%;
 
             font-weight: bold;
             overflow-wrap: break-word;
@@ -65,5 +65,62 @@
         margin: 5vh 0px;
 
         align-self: center;
+    }
+}
+
+@media (max-width: 640px) {
+    .page {
+        .w-md-editor {
+
+            width: 94vw !important;
+            height: 70vh !important;
+            word-break: break-all;
+
+
+            .w-md-editor-toolbar {
+                height: auto !important;
+
+                display: flex;
+                flex-direction: column;
+
+                :nth-child(1) {
+                    align-self: flex-start;
+                    margin-bottom: 1vh;
+                }
+
+                :nth-child(2) {
+                    align-self: flex-end;
+                }
+
+                ul {
+                    li {
+                        button {
+                            svg {
+                                width: 21px;
+                                height: 21px;
+                            }
+                        }
+                    }
+                }
+            }
+
+            .w-md-editor-content {
+
+                height: 76.5% !important;
+            }
+        }
+
+        .guide-pragraph {
+            width: 85vw;
+
+            word-break: break-all;
+
+            margin-top: 3vh;
+        }
+
+        .submit {
+
+            width: 35vw !important;
+        }
     }
 }
