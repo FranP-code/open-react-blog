@@ -6,8 +6,7 @@ const addPostToDatabase = async (userId, post) => {
     try {
         const db = getFirestore(firebase)
         const selectedCollection = collection(db, `users/${userId}/posts`)
-        const doc = await addDoc(selectedCollection, post)
-        console.log(doc.id)
+        await addDoc(selectedCollection, post)
         return "success"
     } catch (error) {
         console.log(error)

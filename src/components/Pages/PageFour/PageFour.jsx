@@ -28,7 +28,6 @@ const PageFour = () => {
   async function pageFourHandler() {
 
     const checkUsernameData = await checkUsernameExistance(username)
-    console.log(checkUsernameData)
 
     if (checkUsernameData.userExists) {
       setDisplayUsername(checkUsernameData.data.displayUsername)
@@ -53,29 +52,18 @@ const PageFour = () => {
     const checkUsernameData = await checkUsernameExistance(username)
     const userId = checkUsernameData.id
     
-    console.log(lastPost)
     const docs = await getMorePosts(userId, lastPost, setLastPost)
     setRawPosts([...rawPosts, ...docs])
 
     const formatedDocs = formatDocs(docs)
     const formatedPostCopy = formatedPosts
 
-    console.log("formatedPostCopy", formatedPostCopy)
-    console.log("formatedDocs", formatedDocs)
-
     for (let i = 0; i < 3; i++) {
-      
-      console.log("formatedPostCopy", formatedPostCopy[i])
-      console.log("formatedDocs", formatedDocs[i])
 
       formatedPostCopy[i].push(...formatedDocs[i])
-
-      console.log("formatedPostCopy", formatedPostCopy[i])
     }
 
     setFormatedPosts(formatedPostCopy)
-    console.log(formatedPosts)
-
     setExecutionGetMoreData(!executionGetMoreData)
   }
 
@@ -88,29 +76,7 @@ const PageFour = () => {
     //! WTF REACT. THE UNIQUE WAY TO APPLY THE *MOREDATA* ON THE USERPOST COMPONENT
   }, [setExecutionGetMoreData])
 
-
-  // React.useEffect(() => {
-
-  //   window.onscroll = function(ev) {
-  //     if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-  //         console.log('bottom')
-  //         getMoreData()
-  //     }
-  // };
-  // }, [lastPost])
-
   useBottomScrollListener(getMoreData)
-  // React.useEffect(() => {
-
-  //   if (posts.length < 1) {
-
-  //     return
-  //   }
-
-  //   if ((window.innerHeight + window.scrollY) >= document.body.offsetHeight) {
-  //     getMoreData()
-  //   }
-  // }, [posts])
   
   return (
     <div className='page'>

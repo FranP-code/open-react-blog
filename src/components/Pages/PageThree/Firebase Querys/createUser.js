@@ -11,7 +11,6 @@ const createUser = async (email, password, userData, enqueueSnackbar) => {
 
     } catch (error) {
         console.log(error)
-        console.log(error.code)
 
         return error.code
     }

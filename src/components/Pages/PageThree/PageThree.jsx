@@ -51,9 +51,6 @@ const PageThree = (props) => {
 
     async function submitFunction (e) {
 
-        console.log(displayUsername)
-        console.log(username)
-
         e.preventDefault()
 
         const email = emailValue.current.value

@@ -11,7 +11,6 @@ const getPost = async (postId, usernameId) => {
         if (docSnap.exists()) {
             const data = docSnap.data()
 
-            console.log(data)
             return {
                 state: "success",
                 title: data.title,

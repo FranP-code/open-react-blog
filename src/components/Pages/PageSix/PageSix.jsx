@@ -132,9 +132,6 @@ const PageSix = ({history}) => {
         const usernameData = await checkUsernameExistance(username)
         setDisplayUsername(usernameData.data.displayUsername)
         const postData = await getPost(postId, usernameData.id)
-        
-        console.log(usernameData)
-        console.log(postData)
 
         if (postData.state === "error") {
 

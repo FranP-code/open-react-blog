@@ -6,13 +6,8 @@ const checkUsernameLoged = (documentId, setUserLoged) => {
         const auth = getAuth()
       
         onAuthStateChanged(auth, (user) => {
-  
-            console.log(user)
-            
+              
             if (user) {
-                
-                console.log(user.uid)
-                console.log(documentId)
   
                 if (user.uid === documentId) {
   

@@ -11,8 +11,6 @@ const RotatingText = ({data, animationDuration, timeBetweenWordAndWord}) => {
     React.useEffect(() => {
         
         timeBetweenWordAndWord = timeBetweenWordAndWord * 1000
-        console.log(data)
-
         document.getElementById('rotatory-text-element').style.setProperty('--animate-duration', `${animationDuration}s`);
 
         function rotatoryArray() {

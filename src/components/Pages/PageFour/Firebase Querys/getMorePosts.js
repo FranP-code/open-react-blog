@@ -17,7 +17,6 @@ const getMorePosts = async (id, lastDocument, setLastPost) => {
                 id: doc.id
             }
         )
-        console.log(docs)
         return docs
     } catch (error) {
         console.log(error)

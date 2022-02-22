@@ -20,7 +20,6 @@ const getPosts = async (id, setLastPost) => {
                 id: doc.id
             }
         )
-        console.log(docs)
         return docs
 
     } catch (error) {

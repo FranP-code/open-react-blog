@@ -122,7 +122,6 @@ const UserPosts = ({rawPosts, formatedPosts, getMoreData, username}) => {
     const [structureOfPosts, setStructureOfPosts] = useState(false)
 
     function defineStructureOfPosts() {
-        console.log("defineStructureOfPosts Executed")
 
         const width = document.body.clientWidth
 

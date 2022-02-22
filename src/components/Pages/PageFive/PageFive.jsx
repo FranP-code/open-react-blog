@@ -33,10 +33,6 @@ const PageFive = ({history}) => {
             const auth = getAuth()
         
             onAuthStateChanged(auth, (user) => {
-
-                console.log(user.uid)
-                console.log(data.id)
-                console.log(user.uid === data.id)
         
                 if (user.uid === data.id) {
                     setUserLoged(true)
@@ -81,10 +77,6 @@ const PageFive = ({history}) => {
         const auth = getAuth()
         
             onAuthStateChanged(auth, (user) => {
-
-                console.log(user.uid)
-                console.log(data.id)
-                console.log(user.uid === data.id)
         
                 if (user.uid === data.id) {
                     
@@ -109,23 +101,18 @@ const PageFive = ({history}) => {
         shortPost = shortPost.join(' ')
 
         if (shortPost.slice(-1) !== '.') {
-            console.log('STRING NO TERMINA CON PUNTO')
+        
             shortPost = shortPost + '...'
-        } else {
-            console.log('STRING TERMINA CON PUNTO')
         }
-    
-        console.log(shortPost)
+
         postObject.shortPost = shortPost
 
         //* Add date
-        console.log(moment().unix())
         postObject.date = {seconds: moment().unix()}
 
         //* Add reading time
         postObject.readingTime = readingTime(post).text.replace(' read', '.')
-        console.log(postObject.readingTime)
-        
+
         //* Add post to DB
         const result = await addPostToDatabase(data.id, postObject)
 
@@ -153,7 +140,6 @@ const PageFive = ({history}) => {
     }
 
     function defineMDEditorStyle() {
-        console.log("defineStructureOfPosts Executed")
 
         const width = document.body.clientWidth
 

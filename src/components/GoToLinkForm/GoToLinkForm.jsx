@@ -86,7 +86,6 @@ const GoToLinkForm = () => {
         e.preventDefault()
 
         const value = inputValue.current.value.trim()
-        console.log(value)
 
         if (value === '') {
 
