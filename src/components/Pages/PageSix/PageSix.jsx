@@ -24,9 +24,15 @@ const PageSix = ({history}) => {
         flex-direction: initial;
         
         padding: 0;
+        margin-bottom: 2vh;
 
         .user-data {
+            height: 100vh;
             width: 15vw;
+
+            position: fixed;
+            top: 0vh;
+            border-right: 1px solid #c0d6ff;
 
             display: flex;
             flex-direction: column;
@@ -54,45 +60,64 @@ const PageSix = ({history}) => {
                 margin-top: 1vh;
             }
         }
-        .content {
-            /* height: 100vh; */
-            width: 70vw;
+        .content-container {
+            
+            width: 100vw;
+            height: 100vh;
 
-            padding: 0px 17vw;
-            margin-bottom: 2vh;
+            display: flex;
+            justify-content: center;
 
-            border: 1px solid #c0d6ff;
-            border-top: none;
-            border-bottom: none;
+            /* border: 1px solid #c0d6ff; */
 
-            header {
-                display: flex;
-                align-items: center;
-                
-                padding: 1vh 0px;
-                
-                user-select: initial;
+            .content {
+                /* height: 100vh; */
+                width: 70vw;
 
-                /* border-bottom: 1px solid #8d9dbb; */
-            }
+                padding: 0px 17vw;
 
-            .wmde-markdown {
+                header {
+                    display: flex;
+                    align-items: center;
+                    
+                    padding: 1vh 0px;
+                    
+                    user-select: initial;
 
-                margin-top: 2vh;
+                    /* border-bottom: 1px solid #8d9dbb; */
+                }
 
-                p {
-                    text-align: justify;
+                .wmde-markdown {
 
+                    margin-top: 2vh;
+                    padding-bottom: 2vh;
+
+                    p {
+                        text-align: justify;
+                    }
                 }
             }
         }
 
+        .right-empty-column {
+            height: 100vh;
+            width: 15vw;
+
+            position: fixed;
+            top: 0vh;
+            left: calc(100vw - 15vw);
+
+            border-left: 1px solid #c0d6ff;
+        }
+
         @media (max-width: 900px) {
             flex-direction: column;
-
+            
             .user-data {
+                height: auto;
+                width: auto;
+                position: initial;
                 padding-top: 2vh;
-                width: 100%;
 
                 flex-direction: initial;
 
@@ -116,14 +141,23 @@ const PageSix = ({history}) => {
                     padding: 1vh 2vw; */
                 }
             }
-            .content {
-                border: none;
+            .content-container {
                 width: 100%;
 
-                header {
-                    height: 10vh;
-                    margin-top: 5vh;
+                .content {
+                    border: none;
+                    width: 100%;
+                    
+                    header {
+                        height: 10vh;
+                        margin-top: 5vh;
+                    }
                 }
+            }
+            .right-empty-column {
+                height: 0;
+                width: 0;
+                position: initial;
             }
         }
     `
@@ -188,14 +222,18 @@ const PageSix = ({history}) => {
                             </h3>
                             <Link to={`/${username}`} children="Profile Page"/>
                         </div>
-                        <div className="content">
-                            <header>
-                                {/* <GoBackArrow onClickFunction={() => history.push(`/${username}`)}/> */}
-                                <TitleTwo>
-                                    {post.title}
-                                </TitleTwo>
-                            </header>
-                            <MDEditor.Markdown source={post.data} />
+                        <div className="content-container">
+                            <div className="content">
+                                <header>
+                                    <TitleTwo>
+                                        {post.title}
+                                    </TitleTwo>
+                                </header>
+                                <MDEditor.Markdown source={post.data} />
+                            </div>
+                        </div>
+                        <div className="right-empty-column">
+
                         </div>
                     </PageSixStyles>
                 : null
