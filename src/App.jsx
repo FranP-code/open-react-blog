@@ -35,9 +35,9 @@ function App() {
     consoleLog(3, "Oh! what a curious guy...")
     consoleLog(4, "Don't forget to check the repo of this project:")
     consoleLog(4.5, "https://github.com/FranP-code/open-react-blog")
-    consoleLog(7, "\nWTF console.image, why the npm module don't work and the images appear double?")
-    
+    consoleLog(7, "\nWTF console.image, why the npm module don't work and the images appear double?")  
   }, [])
+
   return (
     <div className="App">
       <Router>

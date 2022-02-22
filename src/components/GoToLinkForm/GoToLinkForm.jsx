@@ -96,6 +96,15 @@ const GoToLinkForm = () => {
             return
         }
 
+        if (value.includes("/")) {
+
+            enqueueSnackbar("Please, write a VALID username.", {
+                variant: "error"
+            })
+
+            return
+        }
+
         let user = ''
 
         if (value.includes("open-react-blog.netlify.app/")) {

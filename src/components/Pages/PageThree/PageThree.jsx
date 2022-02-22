@@ -65,6 +65,15 @@ const PageThree = (props) => {
             return
         }
 
+        if (username.includes("/")) {
+
+            enqueueSnackbar("Please, write a VALID username.", {
+                variant: "error"
+            })
+
+            return
+        }
+
         if (email === '') {
 
             enqueueSnackbar("Please, write a email.", {
