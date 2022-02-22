@@ -1,20 +1,20 @@
-header {
+.main-header {
   display: flex;
   justify-content: space-between;
   align-items: center;
   height: 15vh;
 }
-header .logo-container {
+.main-header .logo-container {
   display: flex;
   align-items: center;
 }
-header .logo-container * {
+.main-header .logo-container * {
   margin-right: 1vw;
 }
-header .logo-container img {
+.main-header .logo-container img {
   height: 8vh;
 }
-header .logo-container img:hover {
+.main-header .logo-container img:hover {
   animation: rotateIcon 1.5s ease-out forwards;
 }
 @keyframes rotateIcon {
@@ -32,18 +32,18 @@ header .logo-container img:hover {
   }
 }
 @media (max-width: 900px) {
-  header {
+  .main-header {
     height: 30vh;
     padding-top: 2vh;
     justify-content: center;
   }
-  header .logo-container {
+  .main-header .logo-container {
     flex-direction: column;
   }
 }
 
 @media (max-width: 640px) {
-    header {
+    .main-header {
         height: 20vh;
     }
 }

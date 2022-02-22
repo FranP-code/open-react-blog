@@ -17,12 +17,16 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
 
         --animate-duration: 0.2s;
 
+        button {
+            height: 50px;
+        }
+
         .login-form {
             position: absolute;
 
             width: 20vw;
-            left: 77vw;
-            top: 9vh;
+            left: calc(97vw - 20vw);
+            top: calc(50px + 2vh + 1vh);
             z-index: 9000;
             
             /* background: #0e1855bd; */
@@ -50,13 +54,25 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
          }
 
         @media (max-width: 640px) {
-            height: 16vh;
+            height: 100%;
 
             flex-direction: column;
+            /* justify-content: space-around; */
+
+            h1 {
+                word-break: break-all;
+            }
 
             .header-button {
+                margin-top: 1vh;
                 width: 94vw !important;
+                margin: 2.2vh 0vw;
+            }
 
+            .login-form {
+                position: initial;
+                width: 94vw;
+                background: #5a5a5a; 
             }
         }
     `
