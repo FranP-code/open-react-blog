@@ -11,7 +11,7 @@ const UserPosts = ({rawPosts, formatedPosts, getMoreData, username}) => {
     const ArticlesContainerStyles = styled.div`
 
         width: 100%;
-        /* height: 50vh;     */
+        height: 88.9vh;
         padding-bottom: 8vh;
 
         .no-data {

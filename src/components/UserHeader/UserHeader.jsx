@@ -25,7 +25,7 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
             position: absolute;
 
             width: 20vw;
-            left: calc(97vw - 20vw);
+            left: calc(97vw - 20vw - 15px);
             top: calc(50px + 2vh + 1vh);
             z-index: 9000;
             
@@ -34,6 +34,10 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
 
             padding: 2vh 2vw;
             border-radius: 3px;
+
+            &.hidden {
+                z-index: -9000;
+            }
 
             input {
                 height: 5vh;
@@ -179,7 +183,7 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
             return
         }
     }
-  
+
     return (
         <UserHeaderStyles>
             <h1>
@@ -196,7 +200,7 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
             />
             {
                 !signedIn ?
-                    <form className={`${loginFormHidden ? "animate__fadeOut" : "animate__fadeIn"} animate__animated login-form`}>
+                    <form className={`${loginFormHidden ? "animate__fadeOut hidden" : "animate__fadeIn"} animate__animated login-form`}>
                         <input type="email" ref={emailInput}/>
                         <input type="password" ref={passwordInput}/>
                         <ButtonComponent
