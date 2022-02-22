@@ -167,9 +167,13 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
 
         if (loginResponse.response === "success") {
 
-            enqueueSnackbar("Welcome back!", {
+            const welcomeBack = enqueueSnackbar("Welcome back!", {
                 variant: "success"
             })
+
+            setTimeout(() => {
+                closeSnackbar(welcomeBack)
+            }, 1000);
 
             return
         }
