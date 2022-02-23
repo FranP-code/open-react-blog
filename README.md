@@ -1,5 +1,15 @@
-# ORB (Open React Blog)
+<h1 align="center">ORB - (Open React Blog)</h1>
 
+![ORB Demo](https://i.ibb.co/mDQqvDt/1-Open-React-Blog-Demo-Ez-Gif.gif)
+
+<p align="center">
+    <img alt="Github stars" src="https://img.shields.io/github/stars/FranP-code/open-react-blog">
+    <img alt="GitHub repo size" src="https://img.shields.io/github/repo-size/FranP-code/open-react-blog">
+    <a href="https://github.com/FranP-code/open-react-blog/issues"><img alt="GitHub issues" src="https://img.shields.io/github/issues/FranP-code/open-react-blog"></a>
+    <a href="https://github.com/FranP-code/open-react-blog/network"><img alt="GitHub forks" src="https://img.shields.io/github/forks/FranP-code/open-react-blog"></a>
+</p>
+
+## Description
 A blog platform that allow to every user create his own profile and upload his posts and share all with the world.
 
 
@@ -9,10 +19,9 @@ A blog platform that allow to every user create his own profile and upload his p
 
 **Server:** Firebase
 
-
-## Demo
-![ORB Demo](https://i.ibb.co/mDQqvDt/1-Open-React-Blog-Demo-Ez-Gif.gif)
+## Live Demo
 You can visit and check it [here](https://open-react-blog.netlify.app/)
+
 ## Acknowledgements
 
 - NPM Modules and Libraries
