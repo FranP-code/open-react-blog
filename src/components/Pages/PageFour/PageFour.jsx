@@ -87,7 +87,7 @@ const PageFour = () => {
             <UserHeader username={username} displayUsername={displayUsername} signedIn={userLoged}/>
             <UserPosts rawPosts={rawPosts} formatedPosts={formatedPosts} getMoreData={getMoreData} username={username}/>
           </>
-        : 
+        :
         <NoDataPage color="#aabdd6">
           <FontAwesomeIcon
                 icon={faFaceTired}
