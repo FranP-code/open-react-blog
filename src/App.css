@@ -11,7 +11,10 @@
 }
 
 header {
-  user-select: none;
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
 }
 header * h1, header header h1 {
   font-size: 48pt;
@@ -25,6 +28,11 @@ a {
 }
 a::visited {
   color: #2c87ff;
+}
+
+.title-one::-moz-selection, .title-two::-moz-selection, #rotatory-text-element::-moz-selection {
+  background-color: #ffe83d;
+  color: #000;
 }
 
 .title-one::selection, .title-two::selection, #rotatory-text-element::selection {
@@ -45,6 +53,10 @@ a::visited {
     font-size: 30pt;
   }
 
+  .title-three {
+    font-size: 25pt;
+  }
+
   div.title-element {
     font-size: 15pt;
   }
@@ -58,8 +70,12 @@ a::visited {
     font-size: 25pt;
   }
 
+  .title-three {
+    font-size: 20pt;
+  }
+
   div.title-element {
-    font-size: 15pt;
+    font-size: 13pt;
   }
 }
 @media (max-width: 900px) {
@@ -69,6 +85,10 @@ a::visited {
 
   .title-two {
     font-size: 30pt;
+  }
+
+  .title-three {
+    font-size: 27pt;
   }
 
   div.title-element {
@@ -84,9 +104,11 @@ a::visited {
     font-size: 23pt;
   }
 
+  .title-three {
+    font-size: 20pt;
+  }
+
   div.title-element {
     font-size: 18pt;
   }
-}
-
-/*# sourceMappingURL=App.css.map */
+}/*# sourceMappingURL=App.css.map */

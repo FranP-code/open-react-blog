@@ -13,7 +13,16 @@
   /*MORE THAN 9000!*/
 }
 .loading.hidden {
-  animation: hiddeLoading 1s ease-in-out forwards;
+  -webkit-animation: hiddeLoading 1s ease-in-out forwards;
+          animation: hiddeLoading 1s ease-in-out forwards;
+}
+@-webkit-keyframes hiddeLoading {
+  50% {
+    transform: translate(0, 0%);
+  }
+  100% {
+    transform: translate(0, -100%);
+  }
 }
 @keyframes hiddeLoading {
   50% {
@@ -29,13 +38,19 @@
   height: 25vw;
   max-height: 250px;
   color: #aabdd6;
-  animation: rotateImage 1s ease-in-out backwards infinite;
-}
-.loading .fa-hourglass.stop {
-  animation: none;
+  -webkit-animation: rotateImage 1s ease-in-out backwards infinite;
+          animation: rotateImage 1s ease-in-out backwards infinite;
 }
 .loading h2 {
   margin-top: 5vh;
+}
+@-webkit-keyframes rotateImage {
+  0% {
+    transform: rotateZ(0deg);
+  }
+  100% {
+    transform: rotateZ(360deg);
+  }
 }
 @keyframes rotateImage {
   0% {
@@ -44,6 +59,4 @@
   100% {
     transform: rotateZ(360deg);
   }
-}
-
-/*# sourceMappingURL=Loading.css.map */
+}/*# sourceMappingURL=Loading.css.map */

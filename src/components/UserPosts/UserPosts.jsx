@@ -75,7 +75,7 @@ const UserPosts = ({rawPosts, formatedPosts, getMoreData, username}) => {
 
                     .top {
 
-                        display: flex;
+                        // display: flex;
 
                         padding: 1vh 0px;
                         margin-bottom: 2vh; 
@@ -86,8 +86,8 @@ const UserPosts = ({rawPosts, formatedPosts, getMoreData, username}) => {
                             display: flex;
                             flex-direction: column;
                             align-items: flex-end;
-                            
-                            width: 40%;
+
+                            margin-top: 1vh;
                             
                             .date {
                                 
@@ -104,7 +104,6 @@ const UserPosts = ({rawPosts, formatedPosts, getMoreData, username}) => {
 
                         .title-two {
 
-                            width: 60%;
                             overflow-wrap: break-word;
                         }
                     }

@@ -20,6 +20,12 @@
   border: none;
   outline: none;
 }
+.page .title-container .title-input::-moz-placeholder {
+  color: #afafaf;
+}
+.page .title-container .title-input:-ms-input-placeholder {
+  color: #afafaf;
+}
 .page .title-container .title-input::placeholder {
   color: #afafaf;
 }
@@ -75,6 +81,4 @@
   .page .submit {
     width: 35vw !important;
   }
-}
-
-/*# sourceMappingURL=PageFive.css.map */
+}/*# sourceMappingURL=PageFive.css.map */

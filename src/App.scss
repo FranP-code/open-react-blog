@@ -52,7 +52,7 @@ a {
     width: 100%
 }
 
-@mixin textsBreakpoints($fontSize, $subtractionTitleTwo: 20pt, $subtractionLiTitleElement: 30pt) {
+@mixin textsBreakpoints($fontSize, $sub_TitleTwo: 20pt, $sub_Li_Element: 32pt, $sub_titleThree: 25pt) {
     
     .title-one {
     
@@ -61,12 +61,17 @@ a {
     
     .title-two {
     
-        font-size: calc($fontSize - $subtractionTitleTwo);
+        font-size: calc($fontSize - $sub_TitleTwo);
+    }
+
+    .title-three {
+
+        font-size: calc($fontSize - $sub_titleThree);
     }
 
     div.title-element {
 
-        font-size: calc($fontSize - $subtractionLiTitleElement);
+        font-size: calc($fontSize - $sub_Li_Element);
     }
 }
 
@@ -87,17 +92,19 @@ a {
 @media (max-width: 900px) {
 
     $fontSize: 40pt;
-    $subtractionTitleTwo: 10pt;
-    $subtractionLiTitleElement: 15pt;
+    $sub_TitleTwo: 10pt;
+    $sub_Li_Element: 15pt;
+    $sub_titleThree: 13pt;
 
-    @include textsBreakpoints($fontSize, $subtractionTitleTwo, $subtractionLiTitleElement);
+    @include textsBreakpoints($fontSize, $sub_TitleTwo, $sub_Li_Element, $sub_titleThree);
 }
 
 @media (max-width: 640px) {
 
     $fontSize: 33pt;
-    $subtractionTitleTwo: 10pt;
-    $subtractionLiTitleElement: 15pt;
+    $sub_TitleTwo: 10pt;
+    $sub_Li_Element: 15pt;
+    $sub_titleThree: 13pt;
 
-    @include textsBreakpoints($fontSize, $subtractionTitleTwo, $subtractionLiTitleElement);
+    @include textsBreakpoints($fontSize, $sub_TitleTwo, $sub_Li_Element, $sub_titleThree);
 }

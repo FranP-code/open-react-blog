@@ -10,6 +10,13 @@
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 }
+#page-three .flex-container .link-preview .username::-moz-selection {
+  background: none;
+  background: #ffe83d;
+  color: #000;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: initial;
+}
 #page-three .flex-container .link-preview .username::selection {
   background: none;
   background: #ffe83d;
@@ -54,6 +61,4 @@
     flex-direction: column;
     word-break: break-all;
   }
-}
-
-/*# sourceMappingURL=PageThree.css.map */
+}/*# sourceMappingURL=PageThree.css.map */

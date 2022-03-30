@@ -15,7 +15,22 @@
   height: 8vh;
 }
 .main-header .logo-container img:hover {
-  animation: rotateIcon 1.5s ease-out forwards;
+  -webkit-animation: rotateIcon 1.5s ease-out forwards;
+          animation: rotateIcon 1.5s ease-out forwards;
+}
+@-webkit-keyframes rotateIcon {
+  0% {
+    transform: rotate(0deg);
+    height: 8vh;
+  }
+  50% {
+    transform: rotate(360deg);
+    height: 8.5vh;
+  }
+  100% {
+    transform: rotate(360deg);
+    height: 8vh;
+  }
 }
 @keyframes rotateIcon {
   0% {
@@ -31,21 +46,13 @@
     height: 8vh;
   }
 }
-@media (max-width: 900px) {
+@media (max-width: 640px) {
   .main-header {
-    height: 30vh;
+    height: 20vh;
     padding-top: 2vh;
     justify-content: center;
   }
   .main-header .logo-container {
     flex-direction: column;
   }
-}
-
-@media (max-width: 640px) {
-    .main-header {
-        height: 20vh;
-    }
-}
-
-/*# sourceMappingURL=Header.css.map */
+}/*# sourceMappingURL=Header.css.map */

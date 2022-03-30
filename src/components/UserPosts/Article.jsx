@@ -2,6 +2,7 @@ import React from 'react'
 import moment from 'moment'
 import TitleTwo from '../Titles/TitleTwo'
 import { withRouter } from 'react-router'
+import TitleThree from '../Titles/TitleThree'
 
 const Article = ({post, history, username}) => {
 
@@ -12,9 +13,9 @@ const Article = ({post, history, username}) => {
     return (
         <div className={post.data.status === "empty" ? "article empty" : "article"} onClick={clickHandler}>
             <div className="top">
-                <TitleTwo>
+                <TitleThree>
                     {post.data.title}
-                </TitleTwo>
+                </TitleThree>
                 <div className='aditional-data'>
                     <span className='date'>
                         {moment(moment.unix(post.data.date.seconds)).format('L')}
