@@ -1,18 +1,19 @@
 import './App.css';
 import PageOne from './components/Pages/PageOne';
 import PageTwo from './components/Pages/PageTwo';
-import {
-  BrowserRouter as Router,
-  Switch,
-  Route,
-  Link
-} from "react-router-dom";
+import PageTwoAndHalf from './components/Pages/PageTwoAndHalf';
 import PageThree from './components/Pages/PageThree/PageThree';
 import PageFour from './components/Pages/PageFour/PageFour';
 import PageFive from './components/Pages/PageFive/PageFive';
 import PageSix from './components/Pages/PageSix/PageSix';
+
 import React from 'react'
-// import 'console.image'
+import {
+  BrowserRouter as Router,
+  Switch,
+  Route
+} from "react-router-dom";
+
 
 function App() {
 
@@ -35,6 +36,7 @@ function App() {
           <Route path="/">
             <PageOne />
             <PageTwo />
+            <PageTwoAndHalf />
           </Route>
         </Switch>
       </Router>

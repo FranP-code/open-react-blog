@@ -11,12 +11,11 @@ const OrderedList = ({typeOfList, title, data, typeOfData}) => {
 
         list-style: none;
 
-        div {
+        div, h2 {
             
             .emoji {
 
                 font-family: 'Arial';
-                margin-left: 1vw;
             }
 
             margin-top: 1.5vh;
@@ -38,7 +37,7 @@ const OrderedList = ({typeOfList, title, data, typeOfData}) => {
                         }
                         {
                             typeOfData === 'emoji-data' ?
-                                data.map((obj, index) => (<div className='title-element'>{index + 1 + '. '}{obj.text}<span className='emoji'>{obj.emoji}</span></div>))
+                                data.map((obj, index) => (<h2 className='title-two'>{index + 1 + '. '}{obj.text}<span className='emoji'>&nbsp;{obj.emoji}</span></h2>))
                             :null
                         }
                     </TitleStyles>

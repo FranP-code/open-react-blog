@@ -5,45 +5,26 @@ import RotatingText from '../RotatingText/RotatingText'
 import TitleOne from '../Titles/TitleOne'
 import TitleTwo from '../Titles/TitleTwo'
 import styled from 'styled-components'
+import Arrow from '../Arrow/Arrow'
 
 const PageTwo = () => {
 
-    const FlexContainer = styled.div`
+    const Styles = styled.div`
         
         height: 100vh;
-        /* width: 100vw; */
 
         display: flex;
         flex-direction: column;
-        justify-content: space-around;
+        justify-content: space-between;
+
+        margin-top: 3vh;
 
         .ordered-list {
-            font-weight: initial;
+            // margin-top: 9vh;
         }
 
-        .form-container {
-
-            height: 68vh;
-
-            display: flex;
-            flex-direction: column;
-            justify-content: space-around;
+        .my-manifest {
             
-            .titles-container {
-
-                margin-bottom: 5vh;
-            }
-
-            h2 {
-
-                margin-bottom: 3vh;
-                font-weight: initial !important;
-            }
-
-            form {
-
-                margin-bottom: 5vh;
-            }
         }
 
         @media (max-width: 640px) {
@@ -57,39 +38,28 @@ const PageTwo = () => {
   
     return (
         <div className='page' id="page-two">
-            <FlexContainer>
+            <Styles>
+                {/* <TitleOne text="Three simple steps" style={{textAlign: "center"}}/> */}
+                <TitleOne text="Three simple steps" />
                 <OrderedList
                     typeOfList={'title'}
                     typeOfData={"emoji-data"}
-                    data={
-                            [
-                                { text: 'Create your account for free', emoji: "💸"},
-                                { text: 'Make posts that you want', emoji: "💭"},
-                                { text: 'Share your link with the world', emoji: "🔥"}
-                            ]
-                    }
+                    data={[
+                        { text: 'Create your account for free', emoji: "💸"},
+                        { text: 'Make posts that you want', emoji: "💭"},
+                        { text: 'Share your link with the world', emoji: "🔥"}
+                    ]}
                 />
-                <div className="form-container">
-                    <div className="titles-container"> 
-                        <TitleOne text={"Do you have"} />
-                        <TitleOne>
-                            <>
-                                a&nbsp;
-                                <RotatingText
-                                    data={["friend", "influencer", "familiar"]}
-                                    timeBetweenWordAndWord={1.5}
-                                    animationDuration={1}
-                                />
-                                &nbsp;link?
-                            </>
-                        </TitleOne>
-                    </div>
-                    <div className="form">
-                        <TitleTwo text={"Paste it here 👇 or in the web browser to go"}/>
-                        <GoToLinkForm />
-                    </div>
-                </div>
-            </FlexContainer>
+
+                {/* <div className="my-manifest">
+                    <TitleTwo text={"None limit of space or ideas"} style={{color: "#1496BB"}}/>
+                    <TitleTwo text={"Nothing of ads"} style={{color: "#C2571A"}}/>
+                    <TitleTwo text={"Nothing of complex configuration"} style={{color: "#829356"}}/>
+                    <TitleOne text={"Just you and your posts"}/>
+                </div> */}
+
+                <Arrow direction={"page-two-and-half"}/>
+            </Styles>
         </div>
     )
 }

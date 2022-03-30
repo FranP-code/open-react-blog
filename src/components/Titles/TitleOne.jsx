@@ -5,7 +5,8 @@ const TitleOne = (props) => {
     return (
         <h1
             className='title-one'
-            contenteditable={props.contentEditable ? "true"  : "false"}
+            contentEditable={props.contentEditable ? "true"  : "false"}
+            style={props.style}
         >
             {props.text}
             {props.children}

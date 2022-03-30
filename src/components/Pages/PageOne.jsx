@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from 'styled-components';
 import ButtonComponent from '../ButtonComponent/ButtonComponent';
-import GoToDownArrow from '../GoToDownArrow/GoToDownArrow';
+import Arrow from '../Arrow/Arrow';
 import MainHeader from '../MainHeader/MainHeader';
 import TitleOne from '../Titles/TitleOne';
 import TitleTwo from '../Titles/TitleTwo';
@@ -59,7 +59,7 @@ const PageOne = () => {
     }, [])
 
     return (
-        <div className='page'>
+        <div className='page' id="page-one">
             <MainHeader/>
             <FlexContainer>
                 <MainContent>
@@ -68,7 +68,7 @@ const PageOne = () => {
                     <ButtonComponent color="#4CAF50" text={"Create Account"} className='main-page-button' onClickFunction={goToCreateAccount}/>
                 </MainContent>
             </FlexContainer>
-            <GoToDownArrow direction={"page-two"}/>
+            <Arrow direction={"page-two"}/>
         </div>
     )
 }
