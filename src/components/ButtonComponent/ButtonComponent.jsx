@@ -1,28 +1,38 @@
-import React, {useState} from 'react'
+import React from 'react'
 import {Button} from '@mui/material'
-import ButtonHoverElement from './ButtonHoverElement'
-import styled from 'styled-components'
+import ReactTooltip from "react-tooltip";
 
-const ButtonComponent = ({type, className, width, color, onClickFunction, text, children, showHover, hoverText}) => {
+const ButtonComponent = ({type, className, width, color, onClickFunction, text, children, hoverText, hoverPosition}) => {
 
-   return (
-        <Button
-            type={type}
-            className={className}
-            style={{
-                width: width ? width : "auto",
-                color: "#fff",
-                backgroundColor: color ? color : "#4CAF50",
-                fontFamily: "Be Vietnam Pro",
-                fontWeight: "bold",
-                fontSize: "15pt",
-                padding: "1vh 0px"
-            }}
-            onClick={(e) => onClickFunction(e)}
-        >
-            {text}
-            {children}
-        </Button>
+    return (
+        <>
+            <Button
+                type={type}
+                className={className}
+                style={{
+                    width: width ? width : "auto",
+                    color: "#fff",
+                    backgroundColor: color ? color : "#4CAF50",
+                    fontFamily: "Be Vietnam Pro",
+                    fontWeight: "bold",
+                    fontSize: "15pt",
+                    padding: "1vh 0px"
+                }}
+                onClick={(e) => onClickFunction(e)}
+                data-tip
+                data-for={hoverText}
+            >
+                {text}
+                {children}
+            </Button>
+            {
+                hoverText ?
+                    <ReactTooltip id={hoverText} place={hoverPosition} effect="solid">
+                        {hoverText}
+                    </ReactTooltip>
+                : null
+            }
+        </>
     )
 }
 

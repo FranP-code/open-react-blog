@@ -170,6 +170,8 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
                 width="20vw"
                 onClickFunction={signedIn ? redirectPage : alternateLoginForm}
                 className="header-button"
+                hoverText="Is this your account?"
+                hoverPosition="bottom"
             />
             {
                 !signedIn ?
