@@ -1,9 +1,10 @@
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth';
+import { getAuth, signInWithEmailAndPassword, getAdditionalUserInfo } from 'firebase/auth';
 import { useSnackbar } from 'notistack';
 import React from 'react'
 import ButtonComponent from '../ButtonComponent/ButtonComponent';
+import getUsernameByUid from './Firebase Querys/getUsernameByUid';
 
-const LoginForm = ({loginFormHidden, emailInput, passwordInput, alternateLoginForm}) => {
+const LoginForm = ({username, loginFormHidden, emailInput, passwordInput, alternateLoginForm}) => {
 
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
@@ -71,7 +72,7 @@ const LoginForm = ({loginFormHidden, emailInput, passwordInput, alternateLoginFo
 
         if (loginResponse.response === "error") {
 
-            enqueueSnackbar("There was an error login in, please try again.", {
+            enqueueSnackbar("The password don't match or this account is not yours.", {
                 variant: "error"
             })
 
@@ -92,7 +93,14 @@ const LoginForm = ({loginFormHidden, emailInput, passwordInput, alternateLoginFo
 
         try {
             const response = await signInWithEmailAndPassword(auth, email, password)
-            return {response: 'success', data: response.user}
+            const user = await getUsernameByUid(response.user.uid)
+
+            if (user.username === username) {
+                return {response: 'success', data: response.user}
+            } else {
+                auth.signOut()
+                return {response: "error"}
+            }
         } catch (error) {
             console.log(error)
             return {response: 'error'}

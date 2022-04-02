@@ -11,14 +11,19 @@ import { useSnackbar } from 'notistack';
 import moment from 'moment';
 import addPostToDatabase from './Firebase Querys/addPostToDatabase';
 import GoBackArrow from '../../GoBackArrow/GoBackArrow';
+import editPostOnDatabase from './Firebase Querys/editPostOnDatabase'
+import getPost from './Firebase Querys/getPost'
 
 const PageFive = ({history}) => {
 
     const readingTime = require('reading-time/lib/reading-time');
 
-    const title = useRef('')
+    const [title, setTitle] = useState("")
     const [post, setPost] = useState("");
+    
     const username = useParams().username
+    const postId = useParams().postId
+
     const [loading, setLoading] = useState(true)
     const [userLoged, setUserLoged] = useState(false)
     const [MDeditorMobile, setMDEditorMobile] = useState(false)
@@ -31,6 +36,13 @@ const PageFive = ({history}) => {
     
             const data = await checkUsernameExistance(username)
             const auth = getAuth()
+
+            //* If post id is passed on URL, search the post on DB amd set it as post
+            if (postId) {
+                const response = await getPost(postId, data.id)
+                setPost(response.post)
+                setTitle(response.title)
+            }
         
             onAuthStateChanged(auth, (user) => {
         
@@ -53,7 +65,7 @@ const PageFive = ({history}) => {
             variant: "info"
         })
 
-        const postTitle = title.current.value
+        const postTitle = title
 
         //* Validation
         if (postTitle === "" || !postTitle) {
@@ -113,8 +125,16 @@ const PageFive = ({history}) => {
         //* Add reading time
         postObject.readingTime = readingTime(post).text.replace(' read', '.')
 
-        //* Add post to DB
-        const result = await addPostToDatabase(data.id, postObject)
+        let result
+
+        //* If not are a post ID
+        if (!postId) {
+            //* Add post to DB
+            result = await addPostToDatabase(data.id, postObject)
+        } else {
+            //* Update doc on DB
+            result = await editPostOnDatabase(data.id, postId, postObject)
+        }
 
         closeSnackbar(waitSnackbar)
 
@@ -168,7 +188,7 @@ const PageFive = ({history}) => {
                     <div className="page">
                         <div className="animate_animated animate__fadeIn title-container">
                             <GoBackArrow onClickFunction={() => history.push(`/${username}`)}/>
-                            <input type="text" ref={title} className='title-input title-one' placeholder='Title'/>
+                            <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} className='title-input title-one' placeholder='Title'/>
                         </div>
                         <MDEditor
                             value={post}

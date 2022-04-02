@@ -175,7 +175,7 @@ const UserHeader = ({displayUsername, signedIn, history, username}) => {
             />
             {
                 !signedIn ?
-                    <LoginForm loginFormHidden={loginFormHidden} emailInput={emailInput} passwordInput={passwordInput} alternateLoginForm={alternateLoginForm}/>
+                    <LoginForm username={username} loginFormHidden={loginFormHidden} emailInput={emailInput} passwordInput={passwordInput} alternateLoginForm={alternateLoginForm}/>
                 : null
             }
 

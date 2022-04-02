@@ -27,7 +27,7 @@ function App() {
           <Route path="/:username/post/:postId">
             <PageSix />
           </Route>
-          <Route path="/:username/write">
+          <Route path="/:username/write/:postId?">
             <PageFive />
           </Route>
           <Route path="/:username">
