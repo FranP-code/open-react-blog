@@ -1,6 +1,8 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components';
 import { withRouter } from 'react-router-dom'
+
+import LanguageContext from '../../../contexts/LanguageContext'
 
 import ButtonComponent from '../../../components/ButtonComponent/ButtonComponent';
 import Arrow from '../../../components/Arrow/Arrow';
@@ -11,7 +13,6 @@ import TitleTwo from '../../../components/Titles/TitleTwo';
 const MainPage = (props) => {
 
     const FlexContainer = styled.div`
-
         display: flex;
         
         align-items: center;
@@ -20,16 +21,29 @@ const MainPage = (props) => {
         margin-bottom: 5vh;
 
         @media (max-width: 640px) {
-            height: 65vh;
+            height: 55vh;
         }
     `
 
     const MainContent = styled.div`
-
         display: flex;
         flex-direction: column;
-        
     `
+
+    const languageContext = useContext(LanguageContext)
+
+    const text = {
+        english: {
+            firstTitle: "Write your post",
+            secondTitle: "Share it with the world",
+            createAccountButton: "Create account"
+        },
+        spanish: {
+            firstTitle: "Escribe tu post",
+            secondTitle: "Compartelo con el mundo",
+            createAccountButton: "Crear cuenta"
+        }
+    }
 
     function goToCreateAccount(e) {
 
@@ -65,9 +79,9 @@ const MainPage = (props) => {
             <MainHeader/>
             <FlexContainer>
                 <MainContent>
-                    <TitleTwo text={"Write your post"} />
-                    <TitleOne text={"Share with the world"}/>
-                    <ButtonComponent color="#4CAF50" text={"Create Account"} className='main-page-button' onClickFunction={goToCreateAccount}/>
+                    <TitleTwo text={text[languageContext.language].firstTitle} />
+                    <TitleOne text={text[languageContext.language].secondTitle}/>
+                    <ButtonComponent color="#4CAF50" text={text[languageContext.language].createAccountButton} className='main-page-button' onClickFunction={goToCreateAccount}/>
                 </MainContent>
             </FlexContainer>
             <Arrow direction={"welcome-description-page"}/>
