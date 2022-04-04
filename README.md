@@ -32,7 +32,8 @@ You can visit and check it [here](https://open-react-blog.netlify.app/)
   - [Moment.js](https://momentjs.com/)
   - [GitHub - ngryman/reading-time: Medium's like reading time estimation.](https://github.com/ngryman/reading-time#readme)
   - [console.image](https://www.npmjs.com/package/console.image)
-  - [Animate.css](https://animate.style/) 
+  - [Animate.css](https://animate.style/)
+  - [Animista](https://animista.net)
 
 - Designs
   - [Globe icon designed by Freepik](https://www.flaticon.com/premium-icon/globe_735337?related_id=735337#)
@@ -44,6 +45,8 @@ You can visit and check it [here](https://open-react-blog.netlify.app/)
   - [Face grin beam sweat - solid | Font Awesome](https://fontawesome.com/icons/face-grin-beam-sweat?s=solid)
   - [Face dizzy - solid | Font Awesome](https://fontawesome.com/icons/face-dizzy?s=solid)
   - [Face grin beam - solid | Font Awesome](https://fontawesome.com/icons/face-grin-beam?s=solid)
+  - [Edit button | Feather](https://feathericons.com)
+  - [Delete button | Feather](https://feathericons.com)
 
 - Resources 
   - [Markdown Guide](https://culturedcode.com/things/support/articles/4651820/)
