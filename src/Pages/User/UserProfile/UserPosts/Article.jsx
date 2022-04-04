@@ -1,8 +1,8 @@
 import React from 'react'
 import moment from 'moment'
-import TitleTwo from '../Titles/TitleTwo'
 import { withRouter } from 'react-router'
-import TitleThree from '../Titles/TitleThree'
+
+import TitleThree from '../../../../components/Titles/TitleThree'
 
 const Article = ({post, history, username}) => {
 

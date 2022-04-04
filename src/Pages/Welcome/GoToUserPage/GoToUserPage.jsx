@@ -1,12 +1,13 @@
 import React from 'react'
 import styled from 'styled-components'
-import GoToLinkForm from '../GoToLinkForm/GoToLinkForm'
-import RotatingText from '../RotatingText/RotatingText'
-import TitleOne from '../Titles/TitleOne'
-import TitleTwo from '../Titles/TitleTwo'
-import Arrow from '../Arrow/Arrow'
 
-const PageTwoAndHalf = () => {
+import GoToLinkForm from '../../../components/GoToLinkForm/GoToLinkForm'
+import RotatingText from '../../../components/RotatingText/RotatingText'
+import TitleOne from '../../../components/Titles/TitleOne'
+import TitleTwo from '../../../components/Titles/TitleTwo'
+import Arrow from '../../../components/Arrow/Arrow'
+
+const GoToUserPage = () => {
 
     const Styles = styled.div`
 
@@ -46,7 +47,7 @@ const PageTwoAndHalf = () => {
         }
     `
   return (
-        <div className='page' id='page-two-and-half'>
+        <div className='page' id='welcome-go-to-user-page'>
             <Styles>
                 <div className="form-container">
                     <div className="titles-container"> 
@@ -68,10 +69,10 @@ const PageTwoAndHalf = () => {
                         <GoToLinkForm />
                     </div>
                 </div>
-                <Arrow direction="page-one" reverse={true}/>
+                <Arrow direction="welcome-main-page" reverse={true}/>
             </Styles>
         </div>
   )
 }
 
-export default PageTwoAndHalf
+export default GoToUserPage

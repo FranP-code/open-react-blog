@@ -1,11 +1,11 @@
 import './App.css';
-import PageOne from './components/Pages/PageOne';
-import PageTwo from './components/Pages/PageTwo';
-import PageTwoAndHalf from './components/Pages/PageTwoAndHalf';
-import PageThree from './components/Pages/PageThree/PageThree';
-import PageFour from './components/Pages/PageFour/PageFour';
-import PageFive from './components/Pages/PageFive/PageFive';
-import PageSix from './components/Pages/PageSix/PageSix';
+import MainPage from './Pages/Welcome/MainPage/MainPage';
+import DescriptionPage from './Pages/Welcome/DescriptionPage/DescriptionPage';
+import GoToUserPage from './Pages/Welcome/GoToUserPage/GoToUserPage';
+import RegisterUserPage from './Pages/CreateAccount/RegisterUserPage/RegisterUserPage';
+import UserProfile from './Pages/User/UserProfile/UserProfile';
+import CreatePost from './Pages/User/CreatePost/CreatePost';
+import ViewPost from './Pages/User/ViewPost/ViewPost';
 
 import React from 'react'
 import {
@@ -22,21 +22,21 @@ function App() {
       <Router>
         <Switch>
           <Route path="/create-account">
-            <PageThree />
+            <RegisterUserPage />
           </Route>
           <Route path="/:username/post/:postId">
-            <PageSix />
+            <ViewPost />
           </Route>
           <Route path="/:username/write/:postId?">
-            <PageFive />
+            <CreatePost />
           </Route>
           <Route path="/:username">
-            <PageFour />
+            <UserProfile />
           </Route>
           <Route path="/">
-            <PageOne />
-            <PageTwo />
-            <PageTwoAndHalf />
+            <MainPage />
+            <DescriptionPage />
+            <GoToUserPage />
           </Route>
         </Switch>
       </Router>

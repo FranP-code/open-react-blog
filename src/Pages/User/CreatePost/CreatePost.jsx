@@ -1,20 +1,24 @@
 import React, { useRef, useState } from 'react'
-import "./PageFive.css"
 import MDEditor from '@uiw/react-md-editor';
+import moment from 'moment';
 import {withRouter} from 'react-router'
 import {useParams} from 'react-router-dom'
-import ButtonComponent from '../../ButtonComponent/ButtonComponent'
-import { getAuth, onAuthStateChanged } from "firebase/auth";
-import checkUsernameExistance from './Firebase Querys/checkUsernameExistance';
-import Loading from '../../Loading/Loading';
 import { useSnackbar } from 'notistack';
-import moment from 'moment';
+
+import "./CreatePost.css"
+
+import { getAuth, onAuthStateChanged } from "firebase/auth";
+
+import ButtonComponent from '../../../components/ButtonComponent/ButtonComponent'
+import Loading from '../../../components/Loading/Loading';
+import GoBackArrow from '../../../components/GoBackArrow/GoBackArrow';
+
 import addPostToDatabase from './Firebase Querys/addPostToDatabase';
-import GoBackArrow from '../../GoBackArrow/GoBackArrow';
+import checkUsernameExistance from './Firebase Querys/checkUsernameExistance';
 import editPostOnDatabase from './Firebase Querys/editPostOnDatabase'
 import getPost from './Firebase Querys/getPost'
 
-const PageFive = ({history}) => {
+const CreatePost = ({history}) => {
 
     const readingTime = require('reading-time/lib/reading-time');
 
@@ -32,7 +36,7 @@ const PageFive = ({history}) => {
     
     React.useEffect(() => {
 
-        async function pageFiveHandler() {
+        async function createPostHandler() {
     
             const data = await checkUsernameExistance(username)
             const auth = getAuth()
@@ -56,7 +60,7 @@ const PageFive = ({history}) => {
             setLoading(false)
         } 
 
-        pageFiveHandler()
+        createPostHandler()
     }, [])
 
     async function submitFunction() {
@@ -185,7 +189,7 @@ const PageFive = ({history}) => {
             }
             {
                 userLoged ? 
-                    <div className="page">
+                    <div className="page" id="user-create-post">
                         <div className="animate_animated animate__fadeIn title-container">
                             <GoBackArrow onClickFunction={() => history.push(`/${username}`)}/>
                             <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} className='title-input title-one' placeholder='Title'/>
@@ -211,4 +215,4 @@ const PageFive = ({history}) => {
     )
 }
 
-export default withRouter(PageFive)
+export default withRouter(CreatePost)

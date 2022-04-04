@@ -1,28 +1,31 @@
 import MDEditor from '@uiw/react-md-editor'
 import React, { useState } from 'react'
-import getPost from './Firebase Querys/getPost'
 import {useParams} from 'react-router-dom'
-import checkUsernameExistance from './Firebase Querys/checkUsernameExistance'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 import {Link} from 'react-router-dom'
-import { faFaceDizzy, faFaceGrinBeam } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import NoDataPage from '../NoDataPage/NoDataPage'
-import Loading from '../../Loading/Loading'
+import { useSnackbar } from 'notistack'
 import { getAuth, onAuthStateChanged } from "firebase/auth";
-import ButtonComponent from '../../ButtonComponent/ButtonComponent'
+
+import getPost from './Firebase Querys/getPost'
+import checkUsernameExistance from './Firebase Querys/checkUsernameExistance'
+import deletePost from './Firebase Querys/deletePost'
+
+import TitleTwo from '../../../components/Titles/TitleTwo'
+import TitleThree from '../../../components/Titles/TitleThree'
+import NoDataPage from '../../NoDataPage/NoDataPage'
+import Loading from '../../../components/Loading/Loading'
+import ButtonComponent from '../../../components/ButtonComponent/ButtonComponent'
+
 import EditImg from './img/edit.svg'
 import DeleteImg from './img/delete.svg'
 
-import TitleTwo from '../../Titles/TitleTwo'
-import TitleThree from '../../Titles/TitleThree'
-import deletePost from './Firebase Querys/deletePost'
-import { useSnackbar } from 'notistack'
+import { faFaceDizzy, faFaceGrinBeam } from '@fortawesome/free-solid-svg-icons'
 
-const PageSix = ({history}) => {
+const ViewPost = ({history}) => {
 
-    const PageSixStyles = styled.div`
+    const ViewPostStyles = styled.div`
         height: 100%;
 
         display: flex;
@@ -272,7 +275,7 @@ const PageSix = ({history}) => {
 
     const [deletePostSelection, setDeletePostSelection] = useState(false)
 
-    async function pageSixHandler() {
+    async function viewPostHandler() {
 
         //* Check if username exists
         const usernameData = await checkUsernameExistance(username)
@@ -346,7 +349,7 @@ const PageSix = ({history}) => {
     }
 
     React.useEffect(() => {
-        pageSixHandler()
+        viewPostHandler()
     }, [])
 
     return (
@@ -367,7 +370,7 @@ const PageSix = ({history}) => {
             }
             {
                 !loading && postFound ? 
-                    <PageSixStyles className="page">
+                    <ViewPostStyles className="page">
                         <div className="user-data">
                             <FontAwesomeIcon 
                                 icon={faFaceGrinBeam}
@@ -446,11 +449,11 @@ const PageSix = ({history}) => {
                         <div className="right-empty-column">
 
                         </div>
-                    </PageSixStyles>
+                    </ViewPostStyles>
                 : null
             }
         </>
     )
 }
 
-export default withRouter(PageSix)
+export default withRouter(ViewPost)

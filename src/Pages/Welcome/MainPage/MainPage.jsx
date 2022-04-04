@@ -1,12 +1,14 @@
 import React from 'react'
 import styled from 'styled-components';
-import ButtonComponent from '../ButtonComponent/ButtonComponent';
-import Arrow from '../Arrow/Arrow';
-import MainHeader from '../MainHeader/MainHeader';
-import TitleOne from '../Titles/TitleOne';
-import TitleTwo from '../Titles/TitleTwo';
+import { withRouter } from 'react-router-dom'
 
-const PageOne = () => {
+import ButtonComponent from '../../../components/ButtonComponent/ButtonComponent';
+import Arrow from '../../../components/Arrow/Arrow';
+import MainHeader from '../../../components/MainHeader/MainHeader';
+import TitleOne from '../../../components/Titles/TitleOne';
+import TitleTwo from '../../../components/Titles/TitleTwo';
+
+const MainPage = (props) => {
 
     const FlexContainer = styled.div`
 
@@ -33,7 +35,7 @@ const PageOne = () => {
 
         e.preventDefault()
 
-        window.location.href = './create-account'
+        props.history.push('./create-account')
     }
 
     React.useEffect(() => {
@@ -59,7 +61,7 @@ const PageOne = () => {
     }, [])
 
     return (
-        <div className='page' id="page-one">
+        <div className='page' id="welcome-main-page">
             <MainHeader/>
             <FlexContainer>
                 <MainContent>
@@ -68,9 +70,9 @@ const PageOne = () => {
                     <ButtonComponent color="#4CAF50" text={"Create Account"} className='main-page-button' onClickFunction={goToCreateAccount}/>
                 </MainContent>
             </FlexContainer>
-            <Arrow direction={"page-two"}/>
+            <Arrow direction={"welcome-description-page"}/>
         </div>
     )
 }
 
-export default PageOne
+export default withRouter(MainPage)

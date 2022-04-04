@@ -1,0 +1,64 @@
+#register-user-page .flex-container {
+  display: flex;
+  margin-top: 5vh;
+}
+#register-user-page .flex-container .link-preview {
+  margin-left: 10vw;
+}
+#register-user-page .flex-container .link-preview .username {
+  background: linear-gradient(133deg, rgb(63, 94, 251) 0%, rgb(185, 49, 49) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+#register-user-page .flex-container .link-preview .username::-moz-selection {
+  background: none;
+  background: #ffe83d;
+  color: #000;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: initial;
+}
+#register-user-page .flex-container .link-preview .username::selection {
+  background: none;
+  background: #ffe83d;
+  color: #000;
+  -webkit-background-clip: border-box;
+  -webkit-text-fill-color: initial;
+}
+#register-user-page .flex-container .account-form form {
+  display: flex;
+  flex-direction: column;
+}
+#register-user-page .flex-container .account-form form input {
+  height: 5vh;
+  margin-bottom: 1vh;
+  outline: none;
+  border: none;
+  border-bottom: 1px solid #000;
+  font-size: 2.3vh;
+}
+#register-user-page .flex-container .account-form form Button {
+  margin-top: 3vh;
+}
+@media (max-width: 900px) {
+  #register-user-page header .additional-text {
+    position: absolute;
+    top: -20%;
+  }
+  #register-user-page .flex-container {
+    flex-direction: column;
+  }
+  #register-user-page .flex-container .account-form, #register-user-page .flex-container .account-form form {
+    width: 94vw !important;
+  }
+  #register-user-page .flex-container .link-preview {
+    margin-left: 0;
+    margin-top: 8vh;
+  }
+  #register-user-page .flex-container .link-preview .title-two {
+    margin-top: 2.5vh;
+    font-size: 18pt;
+    display: flex;
+    flex-direction: column;
+    word-break: break-all;
+  }
+}/*# sourceMappingURL=RegisterUserPage.css.map */

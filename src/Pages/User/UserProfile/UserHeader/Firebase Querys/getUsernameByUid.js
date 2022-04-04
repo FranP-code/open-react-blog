@@ -1,6 +1,5 @@
-import React from 'react'
-import { collection, getDoc, getFirestore, limit, query, where, doc } from "firebase/firestore"
-import { firebase } from '../../../firebase'
+import {getDoc, getFirestore, doc } from "firebase/firestore"
+import { firebase } from '../../../../../firebase'
 
 const getUsernameByUid = async (uid) => {
 

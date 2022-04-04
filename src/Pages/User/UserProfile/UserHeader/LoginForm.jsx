@@ -1,7 +1,9 @@
-import { getAuth, signInWithEmailAndPassword, getAdditionalUserInfo } from 'firebase/auth';
-import { useSnackbar } from 'notistack';
 import React from 'react'
-import ButtonComponent from '../ButtonComponent/ButtonComponent';
+import { getAuth, signInWithEmailAndPassword} from 'firebase/auth';
+import { useSnackbar } from 'notistack';
+
+import ButtonComponent from '../../../../components/ButtonComponent/ButtonComponent';
+
 import getUsernameByUid from './Firebase Querys/getUsernameByUid';
 
 const LoginForm = ({username, loginFormHidden, emailInput, passwordInput, alternateLoginForm}) => {

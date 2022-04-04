@@ -1,17 +1,17 @@
 import React, { useRef, useState } from 'react'
-import './PageThree.css'
-import AccountForm from '../../AccountForm/AccountForm'
-import LinkPreview from '../../LinkPreview/LinkPreview'
-import MainHeader from '../../MainHeader/MainHeader'
 import { useSnackbar } from 'notistack';
+import {withRouter} from 'react-router'
 
+import './RegisterUserPage.css'
+
+import AccountForm from '../../../components/AccountForm/AccountForm'
+import LinkPreview from '../../../components/LinkPreview/LinkPreview'
+import MainHeader from '../../../components/MainHeader/MainHeader'
 import checkUsername from './Firebase Querys/checkUsername'
 import createUser from './Firebase Querys/createUser'
 import createUserDocumentOnFirestore from './Firebase Querys/createUserDocumentOnFirestore'
 
-import {withRouter} from 'react-router'
-
-const PageThree = (props) => {
+const RegisterUserPage = (props) => {
 
     const [displayUsername, setDisplayUsername] = useState('username')
     const [username, setUsername] = useState('username')
@@ -55,6 +55,8 @@ const PageThree = (props) => {
 
         const email = emailValue.current.value
         const password = passwordValue.current.value
+
+        setUsername(username.trim())
 
         if (username === '' || username === 'username') {
 
@@ -152,8 +154,8 @@ const PageThree = (props) => {
     }
   
     return (
-        <div className='page' id='page-three'>
-            <MainHeader additionalText={"Create Account"}/>
+        <div className='page' id='register-user-page'>
+            <MainHeader additionalText={"Create Account"} link={"../"}/>
             <div className='flex-container'>
                 <AccountForm action={'register'}
                     
@@ -172,4 +174,4 @@ const PageThree = (props) => {
     )
 }
 
-export default withRouter(PageThree)
+export default withRouter(RegisterUserPage)

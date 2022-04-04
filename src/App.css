@@ -24,10 +24,10 @@ header * h2, header header h2 {
 }
 
 a {
-  color: #2c87ff;
+  color: rgb(44, 135, 255);
 }
 a::visited {
-  color: #2c87ff;
+  color: rgb(44, 135, 255);
 }
 
 .title-one::-moz-selection, .title-two::-moz-selection, #rotatory-text-element::-moz-selection {

@@ -1,9 +1,8 @@
 import React, { useRef, useState } from 'react'
 import styled from 'styled-components'
-import ButtonComponent from '../ButtonComponent/ButtonComponent'
 import {withRouter} from 'react-router'
-import { useSnackbar } from 'notistack'
-import { getAuth, signInWithEmailAndPassword } from 'firebase/auth'
+
+import ButtonComponent from '../../../../components/ButtonComponent/ButtonComponent'
 import LoginForm from './LoginForm'
 
 const UserHeader = ({displayUsername, signedIn, history, username}) => {

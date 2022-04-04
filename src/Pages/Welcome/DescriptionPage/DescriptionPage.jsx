@@ -1,13 +1,11 @@
 import React from 'react'
-import GoToLinkForm from '../GoToLinkForm/GoToLinkForm'
-import OrderedList from '../OrderedList/OrderedList'
-import RotatingText from '../RotatingText/RotatingText'
-import TitleOne from '../Titles/TitleOne'
-import TitleTwo from '../Titles/TitleTwo'
 import styled from 'styled-components'
-import Arrow from '../Arrow/Arrow'
 
-const PageTwo = () => {
+import OrderedList from '../../../components/OrderedList/OrderedList'
+import TitleOne from '../../../components/Titles/TitleOne'
+import Arrow from '../../../components/Arrow/Arrow'
+
+const DescriptionPage = () => {
 
     const Styles = styled.div`
         
@@ -37,7 +35,7 @@ const PageTwo = () => {
     `
   
     return (
-        <div className='page' id="page-two">
+        <div className='page' id="welcome-description-page">
             <Styles>
                 {/* <TitleOne text="Three simple steps" style={{textAlign: "center"}}/> */}
                 <TitleOne text="Three simple steps" />
@@ -58,10 +56,10 @@ const PageTwo = () => {
                     <TitleOne text={"Just you and your posts"}/>
                 </div> */}
 
-                <Arrow direction={"page-two-and-half"}/>
+                <Arrow direction={"welcome-go-to-user-page"}/>
             </Styles>
         </div>
     )
 }
 
-export default PageTwo
+export default DescriptionPage

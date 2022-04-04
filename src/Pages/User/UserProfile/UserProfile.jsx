@@ -1,20 +1,25 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import {useParams} from 'react-router-dom'
-import Loading from '../../Loading/Loading'
-import UserHeader from '../../UserHeader/UserHeader'
-import UserPosts from '../../UserPosts/UserPosts'
-import NoDataPage from '../NoDataPage/NoDataPage'
+import { useBottomScrollListener } from 'react-bottom-scroll-listener'
+
+import UserHeader from './UserHeader/UserHeader'
+import UserPosts from './UserPosts/UserPosts'
+
+import Loading from '../../../components/Loading/Loading'
+import NoDataPage from '../../NoDataPage/NoDataPage'
+import TitleTwo from '../../../components/Titles/TitleTwo'
+
 import checkUsernameExistance from './Firebase Querys/checkUsernameExistance'
-import { faFaceTired } from '@fortawesome/free-solid-svg-icons'
-import TitleTwo from '../../Titles/TitleTwo'
 import checkUsernameLoged from "./Firebase Querys/checkUsernameLoged";
 import getPosts from './Firebase Querys/getPosts'
 import formatDocs from './Firebase Querys/formatDocs'
 import getMorePosts from './Firebase Querys/getMorePosts'
-import { useBottomScrollListener } from 'react-bottom-scroll-listener'
 
-const PageFour = () => {
+import { faFaceTired } from '@fortawesome/free-solid-svg-icons'
+
+const UserProfile = () => {
 
   const [loading, setLoading] = useState(true)
   const [displayUsername, setDisplayUsername] = useState(false)
@@ -25,7 +30,7 @@ const PageFour = () => {
   const [formatedPosts, setFormatedPosts] = useState([[], [], []])
   const [executionGetMoreData, setExecutionGetMoreData] = useState(false)
 
-  async function pageFourHandler() {
+  async function userProfileHandler() {
 
     const checkUsernameData = await checkUsernameExistance(username)
 
@@ -44,7 +49,7 @@ const PageFour = () => {
   }
   
   React.useEffect(() => {
-    pageFourHandler()
+    userProfileHandler()
   }, [])
 
   const getMoreData = async () => {
@@ -103,4 +108,4 @@ const PageFour = () => {
   )
 }
 
-export default PageFour
+export default UserProfile

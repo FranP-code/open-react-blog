@@ -1,4 +1,5 @@
 import React from 'react'
+import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
 
 import logo from '../../logo.png'
@@ -11,10 +12,8 @@ const MainHeader = (props) => {
   
     return (
         <header className='main-header'>
-            <div className="logo-container">
-                <img src={logo} alt="" />
-                {/* <h1>ORB</h1>
-                <h2>(Open React Blog)</h2> */}
+            <div className="logo-container" onClick={props.link ? () => props.history.push(props.link) : null} style={{cursor: props.link ? "pointer" : null}}>
+                <img src={logo} alt="logo" />
                 <TitleOne>ORB</TitleOne>
                 <TitleTwo>(Open React Blog)</TitleTwo>
             </div>
@@ -23,4 +22,4 @@ const MainHeader = (props) => {
     )
 }
 
-export default MainHeader
+export default withRouter(MainHeader)

@@ -1,9 +1,9 @@
-.page {
+#user-create-post {
   display: flex;
   flex-direction: column;
   height: auto;
 }
-.page .title-container {
+#user-create-post .title-container {
   width: 94vw;
   display: flex;
   align-items: center;
@@ -11,7 +11,7 @@
   padding-bottom: 1vh;
   border-bottom: 3px solid #000;
 }
-.page .title-container .title-input {
+#user-create-post .title-container .title-input {
   width: 100%;
   font-weight: bold;
   overflow-wrap: break-word;
@@ -20,30 +20,30 @@
   border: none;
   outline: none;
 }
-.page .title-container .title-input::-moz-placeholder {
+#user-create-post .title-container .title-input::-moz-placeholder {
   color: #afafaf;
 }
-.page .title-container .title-input:-ms-input-placeholder {
+#user-create-post .title-container .title-input:-ms-input-placeholder {
   color: #afafaf;
 }
-.page .title-container .title-input::placeholder {
+#user-create-post .title-container .title-input::placeholder {
   color: #afafaf;
 }
-.page .w-md-editor {
+#user-create-post .w-md-editor {
   height: 45vh !important;
   margin-top: 3vh;
   padding-top: 5vh;
 }
-.page .w-md-editor .w-md-editor-content {
+#user-create-post .w-md-editor .w-md-editor-content {
   height: 89% !important;
 }
-.page .guide-pragraph {
+#user-create-post .guide-pragraph {
   margin-top: 1vh;
 }
-.page .guide-pragraph a {
-  color: #2c87ff;
+#user-create-post .guide-pragraph a {
+  color: rgb(44, 135, 255);
 }
-.page .submit {
+#user-create-post .submit {
   margin: 5vh 0px;
   align-self: center;
 }
@@ -81,4 +81,4 @@
   .page .submit {
     width: 35vw !important;
   }
-}/*# sourceMappingURL=PageFive.css.map */
+}/*# sourceMappingURL=CreatePost.css.map */

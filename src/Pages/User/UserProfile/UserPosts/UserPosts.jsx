@@ -1,10 +1,12 @@
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useRef, useState } from 'react'
+import React, { useState } from 'react'
 import styled from 'styled-components'
-import TitleTwo from '../Titles/TitleTwo'
+
+import TitleTwo from '../../../../components/Titles/TitleTwo'
 import Article from './Article'
+import NoDataPage from '../../../NoDataPage/NoDataPage'
+
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFaceGrinBeamSweat } from '@fortawesome/free-solid-svg-icons'
-import NoDataPage from '../Pages/NoDataPage/NoDataPage'
 
 const UserPosts = ({rawPosts, formatedPosts, getMoreData, username}) => {
 

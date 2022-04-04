@@ -6,9 +6,7 @@ const GoToLinkForm = () => {
 
     const GoToLinkFormStyles = styled.div`
 
-        form {
-
-            
+        form {            
             display: flex;
             justify-content: space-around;
 
