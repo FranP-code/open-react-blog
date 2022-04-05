@@ -41,7 +41,7 @@ function App() {
         userLanguage = "spanish"
       }
       //If the language not is in the available languages constant, set english as default
-      if (!availableLanguages.includes(ls_language)) {
+      if (!availableLanguages.includes(userLanguage)) {
         userLanguage = "english"
       }
 
