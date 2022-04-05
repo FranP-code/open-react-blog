@@ -1,6 +1,6 @@
 import { createUserWithEmailAndPassword, getAuth } from "firebase/auth"
 
-const createUser = async (email, password, userData, enqueueSnackbar) => {
+const createUser = async (email, password) => {
   
     try {
         const auth = getAuth()

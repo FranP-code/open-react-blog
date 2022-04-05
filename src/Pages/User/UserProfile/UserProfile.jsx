@@ -1,8 +1,10 @@
 /* eslint-disable react-hooks/exhaustive-deps */
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
 import {useParams} from 'react-router-dom'
 import { useBottomScrollListener } from 'react-bottom-scroll-listener'
+
+import LanguageContext from '../../../contexts/LanguageContext'
 
 import UserHeader from './UserHeader/UserHeader'
 import UserPosts from './UserPosts/UserPosts'
@@ -18,8 +20,23 @@ import formatDocs from './Firebase Querys/formatDocs'
 import getMorePosts from './Firebase Querys/getMorePosts'
 
 import { faFaceTired } from '@fortawesome/free-solid-svg-icons'
+import { withRouter } from 'react-router-dom'
 
-const UserProfile = () => {
+const UserProfile = (props) => {
+
+  const language = useContext(LanguageContext).language
+
+  const text = {
+    //No users? https://knowyourmeme.com/memes/no-bitches
+    noUser: {
+      english: "This user doesn't exists... yet...",
+      spanish: "Este usuario no existe... aún..."
+    },
+    backToMainPage: {
+      english: "Back to main page",
+      spanish: "Volver a la página principal"
+    }
+  }
 
   const [loading, setLoading] = useState(true)
   const [displayUsername, setDisplayUsername] = useState(false)
@@ -99,13 +116,13 @@ const UserProfile = () => {
                 className={loading ? "" : "stop"}
           />
             <TitleTwo>
-              This user doesn't exists... yet...
+              {text.noUser[language]}
             </TitleTwo>
-          <a href='../'>Back to main page</a>
+          <span className="back-to-main-page" onClick={() => {props.history.push('/')}}>{text.backToMainPage[language]}</span>
         </NoDataPage>
       }
     </div>
   )
 }
 
-export default UserProfile
+export default withRouter(UserProfile)

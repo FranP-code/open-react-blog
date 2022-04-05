@@ -30,18 +30,20 @@ const MainPage = (props) => {
         flex-direction: column;
     `
 
-    const languageContext = useContext(LanguageContext)
+    const language = useContext(LanguageContext).language
 
     const text = {
-        english: {
-            firstTitle: "Write your post",
-            secondTitle: "Share it with the world",
-            createAccountButton: "Create account"
+        firstTitle: {
+            english: "Write your post",
+            spanish: "Escribe tu post"
         },
-        spanish: {
-            firstTitle: "Escribe tu post",
-            secondTitle: "Compartelo con el mundo",
-            createAccountButton: "Crear cuenta"
+        secondTitle: {
+            english: "Share it with the world",
+            spanish: "Compartelo con el mundo"
+        },
+        createAccountButton: {
+            english: "Create account",
+            spanish: "Crear cuenta"
         }
     }
 
@@ -79,9 +81,9 @@ const MainPage = (props) => {
             <MainHeader/>
             <FlexContainer>
                 <MainContent>
-                    <TitleTwo text={text[languageContext.language].firstTitle} />
-                    <TitleOne text={text[languageContext.language].secondTitle}/>
-                    <ButtonComponent color="#4CAF50" text={text[languageContext.language].createAccountButton} className='main-page-button' onClickFunction={goToCreateAccount}/>
+                    <TitleTwo text={text.firstTitle[language]} />
+                    <TitleOne text={text.secondTitle[language]}/>
+                    <ButtonComponent color="#4CAF50" text={text.createAccountButton[language]} className='main-page-button' onClickFunction={goToCreateAccount}/>
                 </MainContent>
             </FlexContainer>
             <Arrow direction={"welcome-description-page"}/>

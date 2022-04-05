@@ -1,5 +1,7 @@
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import styled from 'styled-components'
+
+import LanguageContext from '../../../../contexts/LanguageContext'
 
 import TitleTwo from '../../../../components/Titles/TitleTwo'
 import Article from './Article'
@@ -120,6 +122,15 @@ const UserPosts = ({rawPosts, formatedPosts, getMoreData, username}) => {
         }
     `
 
+    const language = useContext(LanguageContext).language
+
+    const text = {
+        noPosts: {
+            english: "Oops, no posts here yet",
+            spanish: "Ups, no hay posts aquí aún"
+        }
+    }
+
     const [structureOfPosts, setStructureOfPosts] = useState(false)
 
     function defineStructureOfPosts() {
@@ -152,8 +163,7 @@ const UserPosts = ({rawPosts, formatedPosts, getMoreData, username}) => {
                                         color="#aabdd6"
                                         />
                                     <div className="titles">
-                                        <TitleTwo text={"What shall we use to fill the empty spaces...?"}/>
-                                        <TitleTwo text={"- Pink Floyd"}/>
+                                        <TitleTwo text={text.noPosts[language]}/>
                                     </div>
                                 </NoDataPage>
                             : null

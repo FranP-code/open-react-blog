@@ -1,9 +1,10 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import styled from 'styled-components'
 
 import OrderedList from '../../../components/OrderedList/OrderedList'
 import TitleOne from '../../../components/Titles/TitleOne'
 import Arrow from '../../../components/Arrow/Arrow'
+import LanguageContext from '../../../contexts/LanguageContext'
 
 const DescriptionPage = () => {
 
@@ -33,19 +34,40 @@ const DescriptionPage = () => {
             }
         }
     `
+
+    const language = useContext(LanguageContext).language
+
+    const text = {
+        english: {
+            firstTitle: "Three simple steps",
+            orderedListTexts: [
+                'Create your account for free',
+                'Make posts that you want',
+                'Share your link with the world'
+            ]
+        },
+        spanish: {
+            firstTitle: "Tres simples pasos",
+            orderedListTexts: [
+                "Crea tu cuenta gratis",
+                "Haz todos los posts que quieras",
+                "Comparte tu link con el mundo"
+            ]
+        }
+    }
   
     return (
         <div className='page' id="welcome-description-page">
             <Styles>
                 {/* <TitleOne text="Three simple steps" style={{textAlign: "center"}}/> */}
-                <TitleOne text="Three simple steps" />
+                <TitleOne text={text[language].firstTitle} />
                 <OrderedList
                     typeOfList={'title'}
                     typeOfData={"emoji-data"}
                     data={[
-                        { text: 'Create your account for free', emoji: "💸"},
-                        { text: 'Make posts that you want', emoji: "💭"},
-                        { text: 'Share your link with the world', emoji: "🔥"}
+                        { text: text[language].orderedListTexts[0], emoji: "💸"},
+                        { text: text[language].orderedListTexts[1], emoji: "💭"},
+                        { text: text[language].orderedListTexts[2], emoji: "🔥"}
                     ]}
                 />
 

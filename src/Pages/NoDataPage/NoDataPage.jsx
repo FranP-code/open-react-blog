@@ -34,9 +34,12 @@ const NoDataPage = (props) => {
             }
         }
 
-        a {
+        .back-to-main-page {
 
             color: rgb(44, 135, 255);
+            
+            cursor: pointer;
+            text-decoration: underline;
 
             &::visited {
 

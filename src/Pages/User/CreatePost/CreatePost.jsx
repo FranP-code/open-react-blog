@@ -1,4 +1,4 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useState } from 'react'
 import MDEditor from '@uiw/react-md-editor';
 import moment from 'moment';
 import {withRouter} from 'react-router'
@@ -17,10 +17,78 @@ import addPostToDatabase from './Firebase Querys/addPostToDatabase';
 import checkUsernameExistance from './Firebase Querys/checkUsernameExistance';
 import editPostOnDatabase from './Firebase Querys/editPostOnDatabase'
 import getPost from './Firebase Querys/getPost'
+import LanguageContext from '../../../contexts/LanguageContext';
 
 const CreatePost = ({history}) => {
 
     const readingTime = require('reading-time/lib/reading-time');
+
+    const language = useContext(LanguageContext).language
+
+    const text = {
+        titlePlaceholder: {
+            english: "Title",
+            spanish: "Título"
+        },
+        markdownGuide: {
+            english: [
+                "You don't know markdown?",
+                {
+                    link: "https://culturedcode.com/things/support/articles/4651820/",
+                    text: "Here"
+                },
+                "is a guide and",
+                {
+                    link: "https://www.markdownguide.org/cheat-sheet/",
+                    text: "here"
+                },
+                "is a Cheat Sheet!"
+            ],
+            spanish: [
+                "¿No sabes usar Markdown?",
+                {
+                    link: "https://markdown.es",
+                    text: "Aquí"
+                },
+                "hay una pequeña guía, y",
+                {
+                    link: "https://comika.es/chuleta-de-mark-down/",
+                    text: "aquí"
+                },
+                "hay un Cheat Sheet (Machete, chuleta...)"
+            ]
+        },
+        submitText: {
+            english: "Submit post",
+            spanish: "Enviar post"
+        },
+        snackbar: {
+            info: {
+                processingData: {
+                    english: "Processing data",
+                    spanish: "Procesando información"
+                }
+            },
+            error: {
+                emptyTitle: {
+                    english: "Please, write a title for your post",
+                    spanish: "Por favor, escribe un título para tu post"
+                },
+                emptyPost: {
+                    english: "Please, write your post",
+                    spanish: "Por favor, escribe tu post"
+                },
+                firebaseError: {
+                    english: "There has been an error, please try again later",
+                    spanish: "Ha ocurrido un error. Inténtelo más tarde"
+                }
+            },
+            success: {
+                english: "All right!, post published. Coming back to profile in 3 seconds...",
+                spanish: "Post publicado! Volviendo al perfil en 3 segundos..."
+            }
+        }
+    }
 
     const [title, setTitle] = useState("")
     const [post, setPost] = useState("");
@@ -65,7 +133,7 @@ const CreatePost = ({history}) => {
 
     async function submitFunction() {
 
-        const waitSnackbar = enqueueSnackbar("Processing data.", {
+        const waitSnackbar = enqueueSnackbar(text.snackbar.info.processingData[language], {
             variant: "info"
         })
 
@@ -73,7 +141,7 @@ const CreatePost = ({history}) => {
 
         //* Validation
         if (postTitle === "" || !postTitle) {
-            enqueueSnackbar("Please, write a title for your post.", {
+            enqueueSnackbar(text.snackbar.error.emptyTitle[language], {
                 variant: "error"
             })
             closeSnackbar(waitSnackbar)
@@ -81,7 +149,7 @@ const CreatePost = ({history}) => {
         }
 
         if (post === "" || !post) {
-            enqueueSnackbar("Please, write your post.", {
+            enqueueSnackbar(text.snackbar.error.emptyPost[language], {
                 variant: "error"
             })
             closeSnackbar(waitSnackbar)
@@ -143,7 +211,7 @@ const CreatePost = ({history}) => {
         closeSnackbar(waitSnackbar)
 
         if (result === 'success') {
-            enqueueSnackbar("All right!, post published. Coming back to profile in 3 seconds...", {
+            enqueueSnackbar(text.snackbar.success[language], {
                 variant: 'success'
             })
 
@@ -155,7 +223,7 @@ const CreatePost = ({history}) => {
         }
 
         if (result === 'error') {
-            enqueueSnackbar("There has been an error, please try again later.", {
+            enqueueSnackbar(text.snackbar.error.firebaseError[language], {
                 variant: "error"
             })
 
@@ -192,7 +260,13 @@ const CreatePost = ({history}) => {
                     <div className="page" id="user-create-post">
                         <div className="animate_animated animate__fadeIn title-container">
                             <GoBackArrow onClickFunction={() => history.push(`/${username}`)}/>
-                            <input type="text" onChange={(e) => setTitle(e.target.value)} value={title} className='title-input title-one' placeholder='Title'/>
+                            <input
+                                type="text"
+                                className='title-input title-one'
+                                placeholder={text.titlePlaceholder[language]}
+                                onChange={(e) => setTitle(e.target.value)}
+                                value={title}
+                            />
                         </div>
                         <MDEditor
                             value={post}
@@ -200,10 +274,28 @@ const CreatePost = ({history}) => {
                             className="animate_animated animate__fadeIn"
                             // fullscreen={MDeditorMobile}
                         />
-                        <p className='animate_animated animate__fadeIn guide-pragraph'>You don't know markdown? <a href="https://culturedcode.com/things/support/articles/4651820/">Here</a> is a guide and <a href="https://www.markdownguide.org/cheat-sheet/">here</a> is a Cheat Sheet!</p>
+                        <p className='animate_animated animate__fadeIn guide-pragraph'>
+                            {
+                                text.markdownGuide[language].map(obj => {
+                                    if (obj.hasOwnProperty('link')) {
+                                        return <>
+                                            <a href={obj.link}
+                                                target="_blank"
+                                                rel="noreferrer"
+                                            >
+                                                {obj.text}
+                                            </a>
+                                            &nbsp;
+                                        </>
+                                    } else {
+                                        return <>{obj}&nbsp;</>
+                                    }
+                                })
+                            }
+                        </p>
                         <ButtonComponent
                             width="20vw"
-                            text="Submit Post"
+                            text={text.submitText[language]}
                             color="#4CAF50"
                             className="submit"
                             onClickFunction={submitFunction}

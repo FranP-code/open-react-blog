@@ -1,5 +1,5 @@
 import MDEditor from '@uiw/react-md-editor'
-import React, { useState } from 'react'
+import React, { useContext, useState } from 'react'
 import {useParams} from 'react-router-dom'
 import { withRouter } from 'react-router-dom'
 import styled from 'styled-components'
@@ -22,6 +22,7 @@ import EditImg from './img/edit.svg'
 import DeleteImg from './img/delete.svg'
 
 import { faFaceDizzy, faFaceGrinBeam } from '@fortawesome/free-solid-svg-icons'
+import LanguageContext from '../../../contexts/LanguageContext'
 
 const ViewPost = ({history}) => {
 
@@ -259,6 +260,67 @@ const ViewPost = ({history}) => {
             }
         }
     `
+    
+    const language = useContext(LanguageContext).language
+
+    const text = {
+        noPost: {
+            english: "Post don't found",
+            spanish: "Post no encontrado"
+        },
+        profileLinkText: {
+            english: "Profile page",
+            spanish: "Perfil"
+        },
+        buttonsText: {
+            delete: {
+                english: "Delete",
+                spanish: "Eliminar"
+            },
+            edit: {
+                english: "Edit",
+                spanish: "Editar"
+            }
+        },
+        deletePostPage: {
+            firstTitle: {
+                english: "You are gonna delete this post",
+                spanish: "Vas a eliminar este post"
+            },
+            secondTitle: {
+                english: "Are you sure?",
+                spanish: "¿Estás seguro?"
+            },
+            yesButton: {
+                english: "YES",
+                spanish: "Sí"
+            },
+            noButton: {
+                english: "Nah",
+                spanish: "Nah"
+            }
+        },
+        snackbar: {
+            info: {
+                deletingPost: {
+                    english: "Deleting post...",
+                    spanish: "Eliminando post..."
+                }
+            },
+            success: {
+                deletingPost: {
+                    english: "Post deleted",
+                    spanish: "Post eliminado"
+                }
+            },
+            error: {
+                deletingPost: {
+                    english: "There has been an error deleting the post",
+                    spanish: "Ha habido un error eliminando el post"
+                }
+            }
+        }
+    }
 
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
     
@@ -318,7 +380,7 @@ const ViewPost = ({history}) => {
     }
 
     async function deletePostFunction() {
-        const waitSnackbar = enqueueSnackbar("Deleting post...", {
+        const waitSnackbar = enqueueSnackbar(text.snackbar.info.deletingPost[language], {
             variant: "info"
         })
 
@@ -328,7 +390,7 @@ const ViewPost = ({history}) => {
         closeSnackbar(waitSnackbar)
 
         if (result === 'success') {
-            enqueueSnackbar("Post deleted", {
+            enqueueSnackbar(text.snackbar.success.deletingPost[language], {
                 variant: 'success'
             })
 
@@ -340,7 +402,7 @@ const ViewPost = ({history}) => {
         }
 
         if (result === 'error') {
-            enqueueSnackbar("There has been an error, please try again later.", {
+            enqueueSnackbar(text.snackbar.error.deletingPost[language], {
                 variant: "error"
             })
 
@@ -363,7 +425,7 @@ const ViewPost = ({history}) => {
                             color="#aabbdd"
                             className='user-icon'
                         />
-                        <h2>Post don't found</h2>
+                        <h2>{text.noPost[language]}</h2>
                         <Link to={`/${username}`} children="Profile Page"/>
                     </NoDataPage>
                 : null
@@ -380,14 +442,14 @@ const ViewPost = ({history}) => {
                             <h3>
                                 {displayUsername}
                             </h3>
-                            <Link to={`/${username}`} children="Profile Page"/>
+                            <Link to={`/${username}`} children={text.profileLinkText[language]}/>
                             {
                                 userLoged ?
                                     <>
                                         {
                                             [
-                                                {image: EditImg, text: "Edit", hoverPostition:  "top", onClickFunction: () => history.push(`/${username}/write/${postId}`)},
-                                                {image: DeleteImg, text: "Delete", hoverPostition:  "bottom", onClickFunction: () => setDeletePostSelection(true)}
+                                                {image: EditImg, text: text.buttonsText.edit[language], hoverPostition:  "top", onClickFunction: () => history.push(`/${username}/write/${postId}`)},
+                                                {image: DeleteImg, text: text.buttonsText.delete[language], hoverPostition:  "bottom", onClickFunction: () => setDeletePostSelection(true)}
                                             ].map(obj => (
                                                 <ButtonComponent
                                                     width="5vw"
@@ -412,22 +474,22 @@ const ViewPost = ({history}) => {
                                 deletePostSelection ?
                                     <div className={`delete-confirmation ${deletePostSelection ? "fade-in" : "fade-out"}`}>
                                         <TitleTwo
-                                            text="You are gonna delete this post"
+                                            text={text.deletePostPage.firstTitle[language]}
                                             style={{color: "#fff"}}
                                         />
                                         <TitleThree
-                                            text="Are you sure?"
+                                            text={text.deletePostPage.secondTitle[language]}
                                             style={{color: "#fff"}}
                                         />
                                         <div className="button-container">
                                             <ButtonComponent
-                                                text="YES"
+                                                text={text.deletePostPage.yesButton[language]}
                                                 onClickFunction={() => deletePostFunction()}
                                                 width="20vw"
                                                 color="rgb(211, 47, 47)"
                                             />
                                             <ButtonComponent
-                                                text="Nah"
+                                                text={text.deletePostPage.noButton[language]}
                                                 onClickFunction={() => setDeletePostSelection(false)}
                                                 width="20vw"
                                             />

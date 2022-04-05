@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useContext } from 'react'
 import { getAuth, signInWithEmailAndPassword} from 'firebase/auth';
 import { useSnackbar } from 'notistack';
 
@@ -6,9 +6,64 @@ import ButtonComponent from '../../../../components/ButtonComponent/ButtonCompon
 
 import getUsernameByUid from './Firebase Querys/getUsernameByUid';
 
+import LanguageContext from '../../../../contexts/LanguageContext';
+
 const LoginForm = ({username, loginFormHidden, emailInput, passwordInput, alternateLoginForm}) => {
 
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
+
+    const language = useContext(LanguageContext).language
+
+    const text = {
+        formPlaceholers: {
+            email: {
+                english: "Email",
+                spanish: "Correo electrónico"
+            },
+            password: {
+                english: "Password",
+                spanish: "Contraseña"
+            },
+            submit: {
+                english: "Submit",
+                spanish: "Enviar"
+            }
+        },
+        snackbar: {
+            error: {
+                emptyEmail: {
+                    english: "Please, write a email",
+                    spanish: "Por favor, escribe un correo electrónico"
+                },
+                invalidEmail: {
+                    english: "Mmh, this doesn't look like an email",
+                    spanish: "Por favor, escribe un correo electrónico valido"
+                },
+                emptyPassword: {
+                    english: "Please, write a password",
+                    spanish: "Por favor, escriba una contraseña"
+                },
+                passwordTooShort: {
+                    english: "Password too short, please write other one",
+                    spanish: "La contraseña es muy corta, escribe otra"
+                },
+                loginFail: {
+                    english: "The password don't match or this account is not yours",
+                    spanish: "La contraseña es incorrecta o esta cuenta no es tuya"
+                }
+            },
+            info: {
+                processingData: {
+                    english: "Processing introduced data, please wait a minute",
+                    spanish: "Procesando información, por favor espere un minuto"
+                }
+            },
+            success: {
+                english: "Welcome back!",
+                spanish: "¡Bienvenido!"
+            }
+        }
+    }
 
     async function submitCredentials(e) {
         e.preventDefault()
@@ -18,7 +73,7 @@ const LoginForm = ({username, loginFormHidden, emailInput, passwordInput, altern
         
         if (email === '') {
 
-            enqueueSnackbar("Please, write a email.", {
+            enqueueSnackbar(text.snackbar.error.emptyEmail[language], {
                 variant: "error"
             })
 
@@ -27,7 +82,7 @@ const LoginForm = ({username, loginFormHidden, emailInput, passwordInput, altern
 
         if (!validateEmail(email)) {
 
-            enqueueSnackbar("Mmh, this doesn't look like an email.", {
+            enqueueSnackbar(text.snackbar.error.invalidEmail[language], {
                 variant: "error"
             })
 
@@ -36,7 +91,7 @@ const LoginForm = ({username, loginFormHidden, emailInput, passwordInput, altern
 
         if (password === '') {
 
-            enqueueSnackbar("Please, write a password.", {
+            enqueueSnackbar(text.snackbar.error.emptyPassword[language], {
                 variant: "error"
             })
 
@@ -45,14 +100,14 @@ const LoginForm = ({username, loginFormHidden, emailInput, passwordInput, altern
 
         if (password.length < 6) {
 
-            enqueueSnackbar("Password too short, please write other one.", {
+            enqueueSnackbar(text.snackbar.error.passwordTooShort[language], {
                 variant: "error"
             })
 
             return
         }
 
-        const processingDataMessage = enqueueSnackbar("Processing introduced data, please wait a minute.", {
+        const processingDataMessage = enqueueSnackbar(text.snackbar.info.processingData[language], {
             variant: "info"
         })
 
@@ -61,7 +116,7 @@ const LoginForm = ({username, loginFormHidden, emailInput, passwordInput, altern
 
         if (loginResponse.response === "success") {
 
-            const welcomeBack = enqueueSnackbar("Welcome back!", {
+            const welcomeBack = enqueueSnackbar(text.snackbar.success[language], {
                 variant: "success"
             })
 
@@ -74,7 +129,7 @@ const LoginForm = ({username, loginFormHidden, emailInput, passwordInput, altern
 
         if (loginResponse.response === "error") {
 
-            enqueueSnackbar("The password don't match or this account is not yours.", {
+            enqueueSnackbar(text.snackbar.error.loginFail, {
                 variant: "error"
             })
 
@@ -121,11 +176,10 @@ const LoginForm = ({username, loginFormHidden, emailInput, passwordInput, altern
         }}
     >
         <form className='login-form' onClick={() => {}}>
-        {/* <form className={`${loginFormHidden ? "fade-out hidden" : "animate__fadeIn"} animate__animated login-form`}> */}
-            <input type="email" ref={emailInput} placeholder="Email"/>
-            <input type="password" ref={passwordInput} placeholder="Password"/>
+            <input type="email" ref={emailInput} placeholder={text.formPlaceholers.email[language]}/>
+            <input type="password" ref={passwordInput} placeholder={text.formPlaceholers.password[language]}/>
             <ButtonComponent
-                text={"Submit"}
+                text={text.formPlaceholers.submit[language]}
                 width="100%"
                 type="submit"
                 onClickFunction={submitCredentials}

@@ -1,6 +1,7 @@
-import React, {useRef} from 'react'
+import React, {useRef, useContext} from 'react'
 import styled from 'styled-components'
 import { useSnackbar } from 'notistack';
+import LanguageContext from '../../contexts/LanguageContext'
 
 const GoToLinkForm = () => {
 
@@ -77,6 +78,27 @@ const GoToLinkForm = () => {
     `
     const { enqueueSnackbar, closeSnackbar } = useSnackbar();
 
+    const language = useContext(LanguageContext).language
+    
+    const text = {
+        snackbar: {
+            error: {
+                emptyInput: {
+                    english: "Please, put some text in the field",
+                    spanish: "Por favor, escriba el usuario en el cuadro de texto"
+                },
+                invalidInput: {
+                    english: "Please, write a VALID username",
+                    spanish:"Por favor, escriba un usuario VALIDO"
+                }
+            },
+            success: {
+                english: user => `Moving to ${user}'s page.`,
+                spanish: user => `Yendo a la página de ${user}`
+            }
+        }
+    }
+
     const inputValue = useRef('')
 
     function submitValidation(e) {
@@ -87,7 +109,7 @@ const GoToLinkForm = () => {
 
         if (value === '') {
 
-            enqueueSnackbar(`Please, put some text in the field.`, {
+            enqueueSnackbar(text.snackbar.error.emptyInput[language], {
                 variant: "error"
             })
 
@@ -96,7 +118,7 @@ const GoToLinkForm = () => {
 
         if (value.includes("/")) {
 
-            enqueueSnackbar("Please, write a VALID username.", {
+            enqueueSnackbar(text.snackbar.error.invalidInput[language], {
                 variant: "error"
             })
 
@@ -106,15 +128,12 @@ const GoToLinkForm = () => {
         let user = ''
 
         if (value.includes("open-react-blog.netlify.app/")) {
-
             user = value.split("open-react-blog.netlify.app/")[1]
-        
         } else {
-
             user = value
         }
 
-        enqueueSnackbar(`Moving to ${user}'s page.`, {
+        enqueueSnackbar(text.snackbar.success[language](user), {
             variant: "success"
         })
 
@@ -136,8 +155,7 @@ const GoToLinkForm = () => {
             })
         }
 
-        window.location.href = `https://open-react-blog.netlify.app/${user.toLowerCase()}`
-        
+        window.location.href = `https://open-react-blog.netlify.app/${user.toLowerCase()}`        
     }
   
     return (

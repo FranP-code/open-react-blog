@@ -1,20 +1,77 @@
-import React, { useRef, useState } from 'react'
+import React, { useContext, useRef, useState } from 'react'
 import { useSnackbar } from 'notistack';
 import {withRouter} from 'react-router'
 
 import './RegisterUserPage.css'
+import LanguageContext from '../../../contexts/LanguageContext'
 
-import AccountForm from '../../../components/AccountForm/AccountForm'
-import LinkPreview from '../../../components/LinkPreview/LinkPreview'
+import AccountForm from './AccountForm/AccountForm'
+import LinkPreview from './LinkPreview/LinkPreview'
 import MainHeader from '../../../components/MainHeader/MainHeader'
+
 import checkUsername from './Firebase Querys/checkUsername'
 import createUser from './Firebase Querys/createUser'
 import createUserDocumentOnFirestore from './Firebase Querys/createUserDocumentOnFirestore'
 
 const RegisterUserPage = (props) => {
 
-    const [displayUsername, setDisplayUsername] = useState('username')
-    const [username, setUsername] = useState('username')
+    const language = useContext(LanguageContext).language
+    
+    const text = {
+        defaultUsername: {
+            english: "username",
+            spanish: "usuario"
+        },
+        snackbar: {
+            error: {
+                emptyUsername: {
+                    english: "Please, write a username",
+                    spanish: "Por favor, escribe un usuario"
+                },
+                invalidUsername: {
+                    english: "Please, write a VALID username",
+                    spanish: "Por favor, escribe un usuario VALIDO"
+                },
+                emptyEmail: {
+                    english: "Please, write a email",
+                    spanish: "Por favor, escribe un correo electrónico"
+                },
+                invalidEmail: {
+                    english: "Mmh, this doesn't look like an email",
+                    spanish: "Por favor, escribe un correo electrónico valido"
+                },
+                emptyPassword: {
+                    english: "Please, write a password",
+                    spanish: "Por favor, escriba una contraseña"
+                },
+                passwordTooShort: {
+                    english: "Password too short, please write other one",
+                    spanish: "La contraseña es muy corta, escribe otra"
+                },
+                emailAlreadyOnUse: {
+                    english: "Email already in use",
+                    spanish: "Este correo electrónico ya fue usado"
+                },
+                usernameAlreadyOnUse: {
+                    english: "Username already on use",
+                    spanish: "Usuario en uso. Prueba con otro"
+                }
+            },
+            info: {
+                creatingAccount: {
+                    english: "Creating account",
+                    spanish: "Creando cuenta"
+                }
+            },
+            success: {
+                english: "Account created!, you will be redirected in 3 seconds",
+                spanish: "Cuenta creada!, vas a ser redirigido en 3 segundos"
+            }
+        }
+    }
+
+    const [displayUsername, setDisplayUsername] = useState(text.defaultUsername[language])
+    const [username, setUsername] = useState(text.defaultUsername[language])
     
     const emailValue = useRef(undefined)
     const passwordValue = useRef(undefined)
@@ -25,12 +82,13 @@ const RegisterUserPage = (props) => {
 
         if (displayUsername === '') {
 
-            setUsername('username')
+            setUsername(text.defaultUsername[language])
             return
         }
 
         let newUsername = displayUsername
         newUsername = newUsername.toLowerCase()
+        newUsername = newUsername.trim()
 
         if (newUsername.includes(' ')) {
 
@@ -58,9 +116,9 @@ const RegisterUserPage = (props) => {
 
         setUsername(username.trim())
 
-        if (username === '' || username === 'username') {
+        if (username === '' || Object.values(text.defaultUsername).indexOf(username) > -1) {
 
-            enqueueSnackbar("Please, write a username.", {
+            enqueueSnackbar(text.snackbar.error.emptyUsername[language], {
                 variant: "error"
             })
 
@@ -69,7 +127,7 @@ const RegisterUserPage = (props) => {
 
         if (username.includes("/")) {
 
-            enqueueSnackbar("Please, write a VALID username.", {
+            enqueueSnackbar(text.snackbar.error.invalidUsername[language], {
                 variant: "error"
             })
 
@@ -78,7 +136,7 @@ const RegisterUserPage = (props) => {
 
         if (email === '') {
 
-            enqueueSnackbar("Please, write a email.", {
+            enqueueSnackbar(text.snackbar.error.emptyEmail[language], {
                 variant: "error"
             })
 
@@ -87,7 +145,7 @@ const RegisterUserPage = (props) => {
 
         if (!validateEmail(email)) {
 
-            enqueueSnackbar("Mmh, this doesn't look like an email.", {
+            enqueueSnackbar(text.snackbar.error.invalidEmail[language], {
                 variant: "error"
             })
 
@@ -96,7 +154,7 @@ const RegisterUserPage = (props) => {
 
         if (password === '') {
 
-            enqueueSnackbar("Please, write a password.", {
+            enqueueSnackbar(text.snackbar.error.emptyPassword[language], {
                 variant: "error"
             })
 
@@ -105,20 +163,24 @@ const RegisterUserPage = (props) => {
 
         if (password.length < 6) {
 
-            enqueueSnackbar("Password too short, please write other one.", {
+            enqueueSnackbar(text.snackbar.error.passwordTooShort[language], {
                 variant: "error"
             })
 
             return
         }
 
-        const creatingAccountMessage = enqueueSnackbar("Creating account", {
+        const creatingAccountMessage = enqueueSnackbar(text.snackbar.info.creatingAccount[language], {
             variant: "info",
         })
-
-        const usernameTaken = await checkUsername(username, enqueueSnackbar)
-
+        
+        const usernameTaken = await checkUsername(username)
+        
         if (usernameTaken) {
+            enqueueSnackbar(text.snackbar.error.usernameAlreadyOnUse[language], {
+                variant: "error",
+                persist: false
+            })
 
             closeSnackbar(creatingAccountMessage)
             return
@@ -128,7 +190,7 @@ const RegisterUserPage = (props) => {
         
         if (createUserResponse === 'auth/email-already-in-use') {
 
-            enqueueSnackbar("Email already in use", {
+            enqueueSnackbar(text.snackbar.error.emailAlreadyOnUse[language], {
                 variant: "error",
                 persist: false
             })
@@ -137,7 +199,7 @@ const RegisterUserPage = (props) => {
             return
         }
 
-        enqueueSnackbar("Account created!, you will be redirected in 3 seconds.", {
+        enqueueSnackbar(text.snackbar.success[language], {
             variant: "success",
             persist: false
         })
@@ -147,15 +209,13 @@ const RegisterUserPage = (props) => {
         await createUserDocumentOnFirestore(userData, username, displayUsername)
         
         setTimeout(() => {
-            
             props.history.push(`../${username}`)
-        
         }, 3000);
     }
   
     return (
         <div className='page' id='register-user-page'>
-            <MainHeader additionalText={"Create Account"} link={"../"}/>
+            <MainHeader link={"../"}/>
             <div className='flex-container'>
                 <AccountForm action={'register'}
                     
