@@ -1,0 +1,18 @@
+footer {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    margin-top: auto;
+    width: 100%;
+
+    padding: 5vh 3vw;
+
+    box-sizing: border-box;
+
+    color:rgb(48, 48, 48);
+
+    a {
+        color: #ff8787
+    }
+}

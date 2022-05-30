@@ -12,6 +12,8 @@ import UserProfile from './Pages/User/UserProfile/UserProfile';
 import CreatePost from './Pages/User/CreatePost/CreatePost';
 import ViewPost from './Pages/User/ViewPost/ViewPost';
 
+import Footer from './components/Footer/Footer'
+
 function App() {
 
   const availableLanguages = [
@@ -72,6 +74,7 @@ function App() {
               <MainPage />
               <DescriptionPage />
               <GoToUserPage />
+              <Footer />
             </Route>
           </Switch>
         </Router>
